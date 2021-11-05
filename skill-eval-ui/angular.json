@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "/home/dotranthiennhan/Desktop/Infodat/Project/skill-eval-rework/skill-eval-ui/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -67,6 +67,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "skill-eval-ui:build",
+            "port": 5300
+          },
           "configurations": {
             "production": {
               "browserTarget": "skill-eval-ui:build:production"
