@@ -7,7 +7,6 @@ import { EmployeeComponent } from './components/dashboard/employee/employee.comp
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditComponent } from './components/edit/edit.component';
-import { MypageComponent } from './components/mypage/mypage.component';
 import { SignupComponent } from './components/login/signup/signup.component';
 import { EmployeeEditComponent } from './components/dashboard/employee/employee-edit/employee-edit.component';
 import { EmployeeStartComponent } from './components/dashboard/employee/employee-start/employee-start.component';
@@ -24,7 +23,6 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     LoginComponent,
     DashboardComponent,
     EditComponent,
-    MypageComponent,
     SignupComponent,
     EmployeeEditComponent,
     EmployeeStartComponent,

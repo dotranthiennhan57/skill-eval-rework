@@ -21,5 +21,6 @@ psql -U node_user SkillEvaluation <./app/bin/dbscripts/scripts/insert_position_l
 psql -U node_user SkillEvaluation <./app/bin/dbscripts/scripts/insert_skills.sql
 psql -U node_user SkillEvaluation <./app/bin/dbscripts/scripts/insert_employee.sql
 psql -U node_user SkillEvaluation <./app/bin/dbscripts/scripts/insert_into_employee_relation.sql
+psql -U node_user SkillEvaluation <./app/bin/dbscripts/scripts/insert_evaluation.sql
 
 echo "$database configured"

@@ -35,14 +35,14 @@ export class EmployeeEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.id = +params['id'];
-        this.editMode = params['id'] !=null;
-        this.initForm();
-      }
-    );
+    // this.route.params
+    // .subscribe(
+    //   (params: Params) => {
+    //     this.id = +params['id'];
+    //     this.editMode = params['id'] !=null;
+    //     this.initForm();
+    //   }
+    // );
   }
 
   onSubmit(){
@@ -79,44 +79,44 @@ export class EmployeeEditComponent implements OnInit {
     (<FormArray>this.employeeForm.get('majorSkills')).removeAt(index);
   }
 
-  private initForm(){
-    let employeeName = '';
-    let employeeImagePath = '';
-    let employeeIDnumber = '';
-    let employeePosition = '';
-    let employeeMentor = '';
-    let employeeMajorSkills = new FormArray([]);
+  // private initForm(){
+  //   let employeeName = '';
+  //   let employeeImagePath = '';
+  //   let employeeIDnumber = '';
+  //   let employeePosition = '';
+  //   let employeeMentor = '';
+  //   let employeeMajorSkills = new FormArray([]);
 
-    if(this.editMode){
-      const employee = this.employeeService.getEmployee(this.id);
-      employeeName = employee.name;
-      employeeImagePath = employee.imagePath;
-      employeeIDnumber = employee.idnumber;
-      employeeMentor = employee.mentor;
-      employeePosition = employee.position;
-      if(employee['majorSkills']){
-        for(let majorSkill of employee.majorSkills){
-          employeeMajorSkills.push(
-            new FormGroup({
-              'name' : new FormControl(majorSkill.name,Validators.required),
-              'rating': new FormControl(majorSkill.rating,[Validators.required,
-                Validators.pattern(/^[1-9]+[0-9]*$/)]
-                )
-            })
-          )
-        }
-      }
+  //   if(this.editMode){
+  //     const employee = this.employeeService.getEmployee(this.id);
+  //     employeeName = employee.name;
+  //     employeeImagePath = employee.imagePath;
+  //     employeeIDnumber = employee.idnumber;
+  //     employeeMentor = employee.mentor;
+  //     employeePosition = employee.position;
+  //     if(employee['majorSkills']){
+  //       for(let majorSkill of employee.majorSkills){
+  //         employeeMajorSkills.push(
+  //           new FormGroup({
+  //             'name' : new FormControl(majorSkill.name,Validators.required),
+  //             'rating': new FormControl(majorSkill.rating,[Validators.required,
+  //               Validators.pattern(/^[1-9]+[0-9]*$/)]
+  //               )
+  //           })
+  //         )
+  //       }
+  //     }
 
-    }
+  //   }
 
-    this.employeeForm = new FormGroup({
-      'name': new FormControl(employeeName,Validators.required),
-      'imagePath': new FormControl(employeeImagePath),
-      'idnumber': new FormControl(employeeIDnumber,Validators.required),
-      'position': new FormControl(employeePosition,Validators.required),
-      'mentor': new FormControl(employeeMentor),
-      'majorSkills': employeeMajorSkills
-    });
-  }
+  //   this.employeeForm = new FormGroup({
+  //     'name': new FormControl(employeeName,Validators.required),
+  //     'imagePath': new FormControl(employeeImagePath),
+  //     'idnumber': new FormControl(employeeIDnumber,Validators.required),
+  //     'position': new FormControl(employeePosition,Validators.required),
+  //     'mentor': new FormControl(employeeMentor),
+  //     'majorSkills': employeeMajorSkills
+  //   });
+  // }
 
 }
