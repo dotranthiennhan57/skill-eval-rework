@@ -4,7 +4,10 @@
   "description": "Node.js Rest Apis with Express, Node-Postgres and PostgreSQL",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "configure": "./app/bin/configuredb.sh",
+    "start": "node ./app/bin/www",
+    "dev": "nodemon ./app/bin/www"
   },
   "keywords": [
     "nodejs",
