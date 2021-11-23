@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-employee-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-item.component.css']
 })
 export class EmployeeItemComponent implements OnInit {
+
+  employees?: Employee[];
 
   constructor() { }
 

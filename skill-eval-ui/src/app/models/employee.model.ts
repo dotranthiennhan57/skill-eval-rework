@@ -3,13 +3,14 @@ import { MinorSkill } from "./minor-skill.model";
 
 
 export class Employee{
-    name?: string;
+    first_name?: string;
+    last_name?:string;
     employee_id?: any;
     imagePath?: string;
-    position: string;
+    position_name?: string;
     // public mentor:string;
-    majorSkills: MajorSkill[];
-    minorSkills: MinorSkill[];
+    // majorSkills: MajorSkill[];
+    // minorSkills: MinorSkill[];
  
     // constructor(name:string, idnumber: string, imagePath: string,position:string, mentor:string,majorSkills: any, minorSkills: any){
     //     this.name = name;

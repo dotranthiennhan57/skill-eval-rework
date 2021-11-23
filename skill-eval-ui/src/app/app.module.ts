@@ -12,9 +12,11 @@ import { EmployeeEditComponent } from './components/dashboard/employee/employee-
 import { EmployeeStartComponent } from './components/dashboard/employee/employee-start/employee-start.component';
 import { EmployeeDetailComponent } from './components/dashboard/employee/employee-detail/employee-detail.component';
 import { EmployeeListComponent } from './components/dashboard/employee/employee-list/employee-list.component';
-import { EmployeeItemComponent } from './components/dashboard/employee/employee-list/employee-item/employee-item.component';
+import { EmployeeItemComponent } from './components/dashboard/employee/employee-start/employee-item/employee-item.component';
 import { AuthComponent } from './common/services/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
