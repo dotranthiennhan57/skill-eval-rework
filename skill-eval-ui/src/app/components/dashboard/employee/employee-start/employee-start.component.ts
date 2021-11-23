@@ -10,7 +10,7 @@ import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 export class EmployeeStartComponent implements OnInit {
   
   employees?: Employee[];
-  currentEmployee: Employee = {}
+  currentEmployee: Employee = {};
   currentIndex = -1;
   
   constructor(private reworkemployeeService: ReworkemployeeService) { }

@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'employees', component: EmployeeComponent, children:[
     {path:'', component: EmployeeStartComponent},
     {path:'new', component: EmployeeEditComponent},
-    {path:':id', component: EmployeeDetailComponent, resolve: [EmployeesResolverService]},
+    {path:':id', component: EmployeeDetailComponent},
     {path:':id/edit', component: EmployeeEditComponent, resolve: [EmployeesResolverService]},
   ]},
   {path: 'auth', component: AuthComponent}

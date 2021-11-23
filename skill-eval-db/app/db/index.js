@@ -4,10 +4,10 @@ const { user, host, database, password, port } = require('../secrets/db_configur
 
 const pool = new Pool({ user, host, database, password, port })
 
-pool.query('SELECT * FROM Employees', (err,res) =>{
-    if(err) return console.log(err);
+// pool.query('SELECT * FROM Employees', (err,res) =>{
+//     if(err) return console.log(err);
 
-    console.log(res); // This is to display details in terminal
-});
+//     console.log(res); // This is to display details in terminal
+// });
 
 module.exports = pool;
