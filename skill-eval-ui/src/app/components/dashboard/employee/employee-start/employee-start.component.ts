@@ -10,6 +10,7 @@ import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 export class EmployeeStartComponent implements OnInit {
   
   employees?: Employee[];
+  
   currentEmployee: Employee = {};
   currentIndex = -1;
   
@@ -28,6 +29,10 @@ export class EmployeeStartComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  gotoEmployee(): void{
+
   }
 
 }

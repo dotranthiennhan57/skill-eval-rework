@@ -24,7 +24,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.getEmployee(this.route.snapshot.params['id']);
     }
   
-
+//Notes: Ayo said the data retrieved from http call is always an array. So set property(type: object) to array index
   getEmployee(id:any): void {
     this.reworkemployeeService.get(id)
       .subscribe({
