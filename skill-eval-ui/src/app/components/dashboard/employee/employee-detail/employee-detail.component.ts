@@ -12,7 +12,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   currentEmployee: Employee = {};
 
-  employees: Employee[];
+  currentEmployeeAll: Employee[] = [];
 
   constructor(
     private reworkemployeeService: ReworkemployeeService,
@@ -34,6 +34,7 @@ export class EmployeeDetailComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+    
   }
 
 }

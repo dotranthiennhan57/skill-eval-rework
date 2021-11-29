@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Employee } from 'src/app/models/employee.model';
+import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 // import { HeaderComponent } from 'src/app/components/header/header.component';
 import { EmployeeService } from '../employee.service';
 
@@ -13,6 +15,9 @@ export class EmployeeEditComponent implements OnInit {
   id: number;
   editMode =false;
   employeeForm: FormGroup;
+
+  currentEmployee: Employee = {};
+
 
  majorOption: any[] = [
     {
@@ -29,8 +34,9 @@ export class EmployeeEditComponent implements OnInit {
     },
   ];
 
-  constructor(private route: ActivatedRoute, 
-    private employeeService: EmployeeService, 
+  constructor(
+    private route: ActivatedRoute, 
+    private reworkemployeeService: ReworkemployeeService, 
     private router:Router,
   ) { }
 
@@ -43,18 +49,31 @@ export class EmployeeEditComponent implements OnInit {
     //     this.initForm();
     //   }
     // );
+    this.getEmployee(this.route.snapshot.params['id']);
   }
 
-  onSubmit(){
-    if(this.editMode){
-      this.employeeService.updateEmployee(this.id, this.employeeForm.value);
-    }else {
-      this.employeeService.addEmployee(this.employeeForm.value);
-    }
-    // this.header.onSaveData();
-    this.onCancel()
-
+  getEmployee(id:any): void {
+    this.reworkemployeeService.get(id)
+      .subscribe({
+        next: (data) => {
+          this.currentEmployee = data[0];
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+    
   }
+
+  // onSubmit(){
+  //   if(this.editMode){
+  //     this.employeeService.updateEmployee(this.id, this.employeeForm.value);
+  //   }else {
+  //     this.employeeService.addEmployee(this.employeeForm.value);
+  //   }
+  //   // this.header.onSaveData();
+  //   this.onCancel()
+
+  // }
 
   onCancel(){
     this.router.navigate(['../'],{relativeTo:this.route});
@@ -64,20 +83,20 @@ export class EmployeeEditComponent implements OnInit {
     return (<FormArray>this.employeeForm.get('majorSkills')).controls;
   }
 
-  onAddMajorSkill (){
-    (<FormArray>this.employeeForm.get('majorSkills')).push(
-      new FormGroup ({
-        'name': new FormControl(null,Validators.required),
-        'rating': new FormControl(null,[Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/)]
-          )
-      })
-    )
-  }
+  // onAddMajorSkill (){
+  //   (<FormArray>this.employeeForm.get('majorSkills')).push(
+  //     new FormGroup ({
+  //       'name': new FormControl(null,Validators.required),
+  //       'rating': new FormControl(null,[Validators.required,
+  //         Validators.pattern(/^[1-9]+[0-9]*$/)]
+  //         )
+  //     })
+  //   )
+  // }
 
-  onDeleteMajorSkill(index:number){
-    (<FormArray>this.employeeForm.get('majorSkills')).removeAt(index);
-  }
+  // onDeleteMajorSkill(index:number){
+  //   (<FormArray>this.employeeForm.get('majorSkills')).removeAt(index);
+  // }
 
   // private initForm(){
   //   let employeeName = '';

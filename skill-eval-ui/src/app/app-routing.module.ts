@@ -14,7 +14,7 @@ const routes: Routes = [
     {path:'', component: EmployeeStartComponent},
     {path:'new', component: EmployeeEditComponent},
     {path:':id', component: EmployeeDetailComponent},
-    {path:':id/edit', component: EmployeeEditComponent, resolve: [EmployeesResolverService]},
+    {path:':id/edit', component: EmployeeEditComponent},
   ]},
   {path: 'auth', component: AuthComponent}
 ];

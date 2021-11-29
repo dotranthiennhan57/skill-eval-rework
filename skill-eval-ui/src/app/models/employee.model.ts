@@ -7,7 +7,10 @@ export class Employee{
     last_name?:string;
     employee_id?: any;
     imagePath?: string;
+    position_id?: string;
     position_name?: string;
+    skill_name?: string;
+    skill_rating?: string;
     // public mentor:string;
     // majorSkills: MajorSkill[];
     // minorSkills: MinorSkill[];

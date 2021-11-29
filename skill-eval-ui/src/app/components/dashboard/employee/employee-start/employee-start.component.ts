@@ -31,8 +31,6 @@ export class EmployeeStartComponent implements OnInit {
       });
   }
 
-  gotoEmployee(): void{
-
-  }
+  
 
 }
