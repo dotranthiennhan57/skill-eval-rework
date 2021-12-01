@@ -82,7 +82,7 @@ input[type="range"]::-moz-range-progress {
 background-color: #7665c9; 
 }
 input[type="range"]::-moz-range-track {  
-background-color: #E5E4E2;
+background-color: #c5c4c2;
 }
 /* IE*/
 input[type="range"]::-ms-fill-lower {

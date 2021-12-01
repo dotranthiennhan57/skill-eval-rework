@@ -49,9 +49,31 @@ router.post('/', (request, response, next) => {
   );
 });
 
+// router.put('/:id', (request, response, next) => {
+//   const { id } = request.params;
+//   const keys = ['skill_id', 'skill_rating'];
+//   const fields = [];
+
+//   keys.forEach(key => {
+//     if (request.body[key]) fields.push(key);
+//   });
+
+//   fields.forEach((field, index) => {
+//     pool.query(
+//       `UPDATE Evaluation SET ${field}=($1) WHERE employee_id=($2)`,
+//       [request.body[field], id],
+//       (err, res) => {
+//         if (err) return next(err);
+
+//         if (index === fields.length - 1) response.redirect('/employees');
+//       }
+//     )
+//   });
+// });
+
 router.put('/:id', (request, response, next) => {
   const { id } = request.params;
-  const keys = ['skill_id', 'skill_rating'];
+  const keys = ['first_name', 'last_name', 'position_id'];
   const fields = [];
 
   keys.forEach(key => {
@@ -60,7 +82,7 @@ router.put('/:id', (request, response, next) => {
 
   fields.forEach((field, index) => {
     pool.query(
-      `UPDATE Evaluation SET ${field}=($1) WHERE employee_id=($2)`,
+      `UPDATE Employees FROM Employees t1 LEFT OUTER JOIN Users t2 ON t1.user_id = t2.user_id LEFT OUTER JOIN position_list t3 ON t1.position_id = t3.position_id left outer join evaluation t4 on t1.employee_id = t4.employee_id left outer join skills t5 on t4.skill_id = t5.skill_id SET t1.${field}= ($1) WHERE t1.employee_id= ($2)`,
       [request.body[field], id],
       (err, res) => {
         if (err) return next(err);

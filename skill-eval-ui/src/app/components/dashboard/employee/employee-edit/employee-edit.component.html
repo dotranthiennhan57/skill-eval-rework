@@ -6,11 +6,11 @@
             <div class="panel panel-default" style="border-radius: 25px;">
                 <div class="panel-body container" style="padding-top: 25px; background-color: #E6E6FA; border-radius: 25px;">
                             <div class="inline-block" style="text-align: left;">
-                            <u><i>---Back to My Page</i></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img class="img-responsive img-circle rounded-circle btn" src="D:\Work\Learning\app_Webpage\New_ideas\New folder/noun_Employee_3279798_p.png" alt="Employees" style=" width: 60px;" title="Employee List" href="D:\Work\Learning\app_Webpage\New_ideas\New folder/employee_list.html">
+                            <u><a [routerLink]= "['../']" routerLinkActive = "active">---Back to My Page</a></u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img-responsive img-circle rounded-circle btn" src="D:\Work\Learning\app_Webpage\New_ideas\New folder/noun_Employee_3279798_p.png" alt="Employees" [routerLink]= "['../../']" routerLinkActive = "active" style=" width: 60px;" title="Employee List" href="D:\Work\Learning\app_Webpage\New_ideas\New folder/employee_list.html">
                             </div> 
                             <div style="padding-top: 7px;">
                                     <div class="panel-body text-center">
-                                        <div class="pv-lg" style="padding-top: 10px;"><img class="center-block img-responsive" src="D:\Work\Learning\app_Webpage/MicrosoftTeams-image.png" alt="Henry" style="width: 90px;" title="Henry"></div>
+                                        <div class="pv-lg" style="padding-top: 10px;"><img class="center-block img-responsive" src="D:\Work\Learning\app_Webpage/MicrosoftTeams-image.png" alt="Henry" style="width: 90px;" title="Pi"></div>
                                         <h3 class="m0 text-bold">{{currentEmployee.first_name}} {{currentEmployee.last_name}}</h3>
                                         <div class="text-sm">
                                             <p>Position: {{currentEmployee.position_name}} <br/>ID#: {{currentEmployee.employee_id}} </p>
@@ -24,9 +24,25 @@
                                 <div class="col-lg-8">
                                     <form class="form-horizontal ng-pristine ng-valid" style="padding-left: 10%;">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="inputContact1">Name</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" id="inputContact1" type="text" placeholder="" value="{{currentEmployee.first_name}} {{currentEmployee.last_name}}">
+                                            <label class="col-sm-3 control-label" for="first_name">First Name</label>
+                                            <div class="col-sm-9">
+                                                <input 
+                                                    class="form-control" 
+                                                    id="first_name" 
+                                                    type="text" 
+                                                    placeholder="" 
+                                                    value="{{currentEmployee.first_name}} ">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="last_name">Last Name</label>
+                                            <div class="col-sm-9">
+                                                <input 
+                                                    class="form-control" 
+                                                    id="last_name" 
+                                                    type="text" 
+                                                    placeholder="" 
+                                                    value="{{currentEmployee.last_name}}">
                                             </div>
                                         </div>
                                         <!-- <div class="form-group">
@@ -35,26 +51,27 @@
                                                 <input class="form-control" id="inputContact2" type="email" value="https://www.google.com/search?q=stock+photos&rlz=1C1CHZN_enUS932US934&sxsrf=AOaemvJtuJ3YaIXnCkJxnaH28uDyHtk4Cg:1632425547844&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjEuJqH65XzAhVTaM0KHT1HBRIQ_AUoAXoECAEQAw&biw=940&bih=752&dpr=1.25#imgrc=JLCQ-jv2cQn_tM">
                                             </div>
                                         </div> -->
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="col-sm-3 control-label" for="inputContact3">ID Number</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-9">
                                                 <input class="form-control" id="inputContact3" type="text" value="{{currentEmployee.employee_id}}">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="inputContact4">Position</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 control-label" for="inputContact4">Position</label>
+                                            <div class="col-sm-9">
                                                 <select id="inputState" class="form-select">
-                                                    <option selected>Manager</option>
-                                                    <option>...</option>
-                                                    <option>...</option>
-                                                    <option>...</option>
+                                                    <option value="1">Manager</option>
+                                                    <option value="2">Team Lead</option>
+                                                    <option value="3">Senior Employee</option>
+                                                    <option value="4">Junior Employee</option>
+                                                    <option value="5">Director</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="inputContact5">Mentor</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-3 control-label" for="inputContact5">Mentor</label>
+                                            <div class="col-sm-9">
                                                 <select id="inputState" class="form-select">
                                                     <option selected>Henry</option>
                                                     <option>Ayo</option>
@@ -64,7 +81,7 @@
                                             </div>
                                         </div>
                                         <br/>
-                                        <div class="col-md-5" style="display: inline-block; padding-bottom: 4px;">
+                                        <!-- <div class="col-md-5" style="display: inline-block; padding-bottom: 4px;">
                                         <select id="inputState" class="form-select">
                                             <option selected>Data Analyst</option>
                                             <option>Item</option>
@@ -84,9 +101,9 @@
                                                 <option>80</option>
                                                 <option>100</option>
                                         </datalist>
-                                        </div>
+                                        </div> -->
                                         
-                                        <br/>
+                                        <!-- <br/>
                                         <div class="col-md-5" style="display: inline-block; padding-bottom: 4px;">
                                         <select id="inputState" class="form-select">
                                             <option selected>Project Manager</option>
@@ -106,13 +123,13 @@
                                                 <option>80</option>
                                                 <option>100</option>
                                             </datalist>
-                                        </div>
+                                        </div> -->
                                         
-                                        <div style="padding-top: 25px; padding-bottom: 10%;">
+                                        <!-- <div style="padding-top: 25px; padding-bottom: 10%;">
                                                 <div class="text-right" style="padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:90px; height: 40px;">
                                                     <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
                                                 </div>
-                                        </div>
+                                        </div> -->
                                     </form>    
                                 </div>
                             </div>

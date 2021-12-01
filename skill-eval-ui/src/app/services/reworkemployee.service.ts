@@ -16,8 +16,16 @@ export class ReworkemployeeService {
     return this.http.get<Employee[]>(baseUrl);
   }
 
-  get(id: any): Observable<Employee> {
-    return this.http.get(`${baseUrl}/${id}`);
+  get(id: any): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${baseUrl}/${id}`);
+  }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  updateDetails(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}/edit`, data);
   }
 
 }

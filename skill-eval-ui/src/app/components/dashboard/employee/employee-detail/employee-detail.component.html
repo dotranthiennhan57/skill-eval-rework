@@ -2,7 +2,7 @@
     <div class="row ng-scope">
         <div class="col-md-6 container" style="padding-top: 5%;">
             <div class="panel panel-default" style="border-radius: 25px;">
-                <div class="panel-body container" style="padding-top: 25px; background-color: #E6E6FA; border-radius: 25px; padding-bottom: 5%;">
+                <div class="panel-body container" style="padding-top: 25px; background-color: #d5d5e9; border-radius: 25px; padding-bottom: 5%;">
                     <div style="padding-top: 7px;">
                             <div class="panel-body text-center">
                               <div id="banner">
@@ -22,13 +22,13 @@
                                         Rate Skills
                                     </h3>
                                 <div>
-                                  <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" >
-                                          {{currentEmployee.skill_name}} &nbsp;&nbsp;&nbsp;
+                                  <div class="accordion accordion-flush" id="accordionFlushExample" >
+                                    <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll">
+                                      <h2 class="accordion-header" id="flush-headingOne" >
+                                        <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                          {{currentEmployeeEl.skill_name}} &nbsp;&nbsp;&nbsp;
                                           <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; padding-top: 20px !important;" >
-                                            <input type="range" min="0" max="10" value="{{currentEmployee.skill_rating}}" id="fader" 
+                                            <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
                                                     step="1" list="volsettings" width="">
                                             <datalist id="volsettings">
                                                   <option>0</option>
@@ -43,7 +43,7 @@
                                                   <option>9</option>
                                                   <option>10</option>
                                             </datalist>
-                                            <p style="font-size: 10px !important;">Value: {{currentEmployee.skill_rating}} <span id="fader"></span></p>
+                                            <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
                                           </div>
                                         </button>
                                       </h2>
@@ -112,7 +112,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="accordion-item">
+                                    <!-- <div class="accordion-item">
                                       <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                           {{currentEmployee.skill_name}} &nbsp;&nbsp;&nbsp;
@@ -287,7 +287,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                   </div>
                             </div>
                             <!-- <div style="padding-left: 10%; padding-top: 25px;">

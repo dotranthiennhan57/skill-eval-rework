@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeDetailComponent } from './employee-detail.component';
@@ -8,7 +9,8 @@ describe('EmployeeDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeDetailComponent ]
+      declarations: [ EmployeeDetailComponent ],
+      providers: [HttpClient]
     })
     .compileComponents();
   });
@@ -20,6 +22,6 @@ describe('EmployeeDetailComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeUndefined();
   });
 });
