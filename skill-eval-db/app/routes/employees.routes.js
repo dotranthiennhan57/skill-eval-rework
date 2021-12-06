@@ -16,23 +16,34 @@ router.get('/', (request, response, next) => {
     // });
   });
   
-router.get('/:id', (request, response, next) => {
-  const { id } = request.params;
+router.get('/:employee_id', (request, response, next) => {
+  const { employee_id } = request.params;
 
-  pool.query('SELECT t1.employee_id, first_name, last_name, position_name, skill_name, skill_rating, subskillof FROM Employees t1 LEFT OUTER JOIN Users t2 ON t1.user_id = t2.user_id LEFT OUTER JOIN position_list t3 ON t1.position_id = t3.position_id left outer join evaluation t4 on t1.employee_id = t4.employee_id left outer join skills t5 on t4.skill_id = t5.skill_id WHERE t1.employee_id = $1 and t5.subskillof is null;', [id], (err, res) => {
+  pool.query('SELECT t1.employee_id, first_name, last_name, position_name, t4.skill_id, skill_name, skill_rating, subskillof FROM Employees t1 LEFT OUTER JOIN Users t2 ON t1.user_id = t2.user_id LEFT OUTER JOIN position_list t3 ON t1.position_id = t3.position_id left outer join evaluation t4 on t1.employee_id = t4.employee_id left outer join skills t5 on t4.skill_id = t5.skill_id WHERE t1.employee_id = $1 and t5.subskillof is null ORDER BY skill_name', [employee_id], (err, res) => {
     if (err) return next(err);
 
     response.json(res.rows);
   });
 });
 
-router.get('/', (request, response, next) => {
-  pool.query('SELECT * FROM position_list ORDER BY position_id', (err, res) => {
+router.get('/:employee_id/:skill_id', (request, response, next) => {
+  const { employee_id , skill_id } = request.params;
+
+  pool.query('SELECT t1.employee_id, first_name, last_name, position_name, t4.skill_id, skill_name, skill_rating, subskillof FROM Employees t1 LEFT OUTER JOIN Users t2 ON t1.user_id = t2.user_id LEFT OUTER JOIN position_list t3 ON t1.position_id = t3.position_id left outer join evaluation t4 on t1.employee_id = t4.employee_id left outer join skills t5 on t4.skill_id = t5.skill_id WHERE t1.employee_id = $1 and t5.subskillof is null ORDER BY skill_name', [employee_id, skill_id], (err, res) => {
     if (err) return next(err);
-    // FULL OUTER JOIN evaluation t4 ON t1.employee_id = t4.employee_id FULL OUTER JOIN skills t5 ON t4.skill_id = t5.skill_id
+
     response.json(res.rows);
   });
 });
+
+
+// router.get('/', (request, response, next) => {
+//   pool.query('SELECT * FROM position_list ORDER BY position_id', (err, res) => {
+//     if (err) return next(err);
+//     // FULL OUTER JOIN evaluation t4 ON t1.employee_id = t4.employee_id FULL OUTER JOIN skills t5 ON t4.skill_id = t5.skill_id
+//     response.json(res.rows);
+//   });
+// });
 
 router.post('/', (request, response, next) => {
   // const { id } = request.params;
@@ -73,7 +84,8 @@ router.post('/', (request, response, next) => {
 
 router.put('/:id', (request, response, next) => {
   const { id } = request.params;
-  const keys = ['first_name', 'last_name', 'position_id'];
+  const { skill_id } = request.body
+  const keys = ['skill_rating'];
   const fields = [];
 
   keys.forEach(key => {
@@ -82,8 +94,8 @@ router.put('/:id', (request, response, next) => {
 
   fields.forEach((field, index) => {
     pool.query(
-      `UPDATE Employees FROM Employees t1 LEFT OUTER JOIN Users t2 ON t1.user_id = t2.user_id LEFT OUTER JOIN position_list t3 ON t1.position_id = t3.position_id left outer join evaluation t4 on t1.employee_id = t4.employee_id left outer join skills t5 on t4.skill_id = t5.skill_id SET t1.${field}= ($1) WHERE t1.employee_id= ($2)`,
-      [request.body[field], id],
+      `UPDATE evaluation SET ${field}= ($1) WHERE employee_id= ($2) and skill_id = ($3)`,
+      [request.body[field], id, skill_id],
       (err, res) => {
         if (err) return next(err);
 

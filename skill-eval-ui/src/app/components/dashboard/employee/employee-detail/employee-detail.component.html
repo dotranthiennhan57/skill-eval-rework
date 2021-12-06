@@ -21,273 +21,101 @@
                                     <h3>
                                         Rate Skills
                                     </h3>
-                                <div>
-                                  <div class="accordion accordion-flush" id="accordionFlushExample" >
-                                    <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll">
-                                      <h2 class="accordion-header" id="flush-headingOne" >
-                                        <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          {{currentEmployeeEl.skill_name}} &nbsp;&nbsp;&nbsp;
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; padding-top: 20px !important;" >
-                                            <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                                  <option>0</option>
-                                                  <option>1</option>
-                                                  <option>2</option>
-                                                  <option>3</option>
-                                                  <option>4</option>
-                                                  <option>5</option>
-                                                  <option>6</option>
-                                                  <option>7</option>
-                                                  <option>8</option>
-                                                  <option>9</option>
-                                                  <option>10</option>
-                                            </datalist>
-                                            <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
-                                          </div>
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body bgcolorp">
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; ">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingTwo">
-                                        <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                          {{currentEmployee.skill_name}} &nbsp;&nbsp;&nbsp;
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="currentEmployee.skill_rating" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body bgcolorp" >
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; ">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
+                                </div>
+
+                                  
+                                    <div class="accordion accordion-flush" id="accordionFlushExample" >
+                                      <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
+                                        <h2 class="accordion-header" [id]="'heading'+i" >
+                                          <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                                            {{currentEmployeeEl.skill_name}} &nbsp;&nbsp;&nbsp;
+                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; padding-top: 20px !important;" >
+                                              <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
+                                                      step="1" list="volsettings" width="">
+                                              <datalist id="volsettings">
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                    <option>10</option>
+                                              </datalist>
+                                              <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
+                                            </div>
+                                          </button>
+                                        </h2>
+                                        <div [id]="'collapse'+i" class="accordion-collapse collapse"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample">
+                                          <div class="accordion-body bgcolorp">
+                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                              <p>Minor Skill</p>
+                                            </div>
+                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
+                                              <input type="range" min="0" max="10" value="5" id="fader" 
+                                                      step="1" list="volsettings" width="">
+                                              <datalist id="volsettings">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                              </datalist>
+                                            </div>
+                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                              <p>Minor Skill</p>
+                                            </div>
+                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
+                                              <input type="range" min="0" max="10" value="5" id="fader" 
+                                                      step="1" list="volsettings" width="">
+                                              <datalist id="volsettings">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                              </datalist>
+                                            </div>
+                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                              <p>Minor Skill</p>
+                                            </div>
+                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; ">
+                                              <input type="range" min="0" max="10" value="5" id="fader" 
+                                                      step="1" list="volsettings" width="">
+                                              <datalist id="volsettings">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                              </datalist>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingThree">
-                                        <button class="accordion-button collapsed pad-color-p" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                          Project Management &nbsp;&nbsp;&nbsp;
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body bgcolorp">
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                          <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                            <p>Minor Skill</p>
-                                          </div>
-                                          <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; ">
-                                            <input type="range" min="0" max="10" value="5" id="fader" 
-                                                    step="1" list="volsettings" width="">
-                                            <datalist id="volsettings">
-                                              <option>0</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </datalist>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div> -->
+                                     
+                                    
                                   </div>
                             </div>
                             <!-- <div style="padding-left: 10%; padding-top: 25px;">
@@ -320,5 +148,5 @@
         </div>
         </div>
         </div>
-    </div>
+    
 </div>

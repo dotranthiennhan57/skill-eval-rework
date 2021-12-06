@@ -21,7 +21,7 @@ export class EmployeeStartComponent implements OnInit {
   }
 
   retrieveEmployees():void{
-    this.reworkemployeeService.getAll()
+    this.reworkemployeeService.getAllEmployees()
       .subscribe({
         next: (data) => {
           this.employees = data;
