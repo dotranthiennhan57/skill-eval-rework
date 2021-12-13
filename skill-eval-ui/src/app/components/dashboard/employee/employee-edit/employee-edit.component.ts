@@ -53,7 +53,7 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   getEmployee(id:any): void {
-    this.reworkemployeeService.get(id)
+    this.reworkemployeeService.getEmployeeInfo(id)
       .subscribe({
         next: (data) => {
           this.currentEmployee = data[0];

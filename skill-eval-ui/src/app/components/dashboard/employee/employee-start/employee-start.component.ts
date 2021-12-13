@@ -16,10 +16,12 @@ export class EmployeeStartComponent implements OnInit {
   
   constructor(private reworkemployeeService: ReworkemployeeService) { }
 
+  //Call retrieveEmployees() immediately to get data (array of objects) from data base
   ngOnInit(): void {
     this.retrieveEmployees();
   }
 
+  // This method makes a http call. Check reworkemployeeService
   retrieveEmployees():void{
     this.reworkemployeeService.getAllEmployees()
       .subscribe({

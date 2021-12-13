@@ -50,12 +50,12 @@
                                           </button>
                                         </h2>
                                         <div [id]="'collapse'+i" class="accordion-collapse collapse"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample">
-                                          <div class="accordion-body bgcolorp">
+                                          <div class="accordion-body bgcolorp" *ngFor="let currentSubskillsEl of currentSubskills">
                                             <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                              <p>Minor Skill</p>
+                                              <p>{{currentSubskillsEl.skill_name}}</p>
                                             </div>
                                             <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                              <input type="range" min="0" max="10" value="5" id="fader" 
+                                              <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
                                                       step="1" list="volsettings" width="">
                                               <datalist id="volsettings">
                                                 <option>0</option>
@@ -70,8 +70,9 @@
                                                 <option>9</option>
                                                 <option>10</option>
                                               </datalist>
+                                              <p style="font-size: 10px !important;">Value: {{currentSubskillsEl.skill_rating}} <span id="fader"></span></p>
                                             </div>
-                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                            <!-- <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
                                               <p>Minor Skill</p>
                                             </div>
                                             <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
@@ -110,7 +111,7 @@
                                                 <option>9</option>
                                                 <option>10</option>
                                               </datalist>
-                                            </div>
+                                            </div> -->
                                           </div>
                                         </div>
                                       </div>

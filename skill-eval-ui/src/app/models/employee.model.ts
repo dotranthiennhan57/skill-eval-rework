@@ -9,6 +9,7 @@ export class Employee{
     imagePath?: string;
     position_id?: string;
     position_name?: string;
+    major_skills?: MajorSkill[];
     skill_id?: string;
     skill_name?: string;
     skill_rating?: string;
