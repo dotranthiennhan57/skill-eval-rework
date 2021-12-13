@@ -62,12 +62,13 @@ router.get('/:employee_id', (request, response, next) => {
 
 router.get('/:employee_id/data', (request, response, next) => {
   const { employee_id } = request.params;
+  // const { skill_id } = request.body;
 
   const getEmployeeByIdText =`
   select * from skills s 
   left outer join evaluation e on s.skill_id = e.skill_id 
   where subskillof is not null and employee_id = $1;
-    `
+  `
 
   pool.query(getEmployeeByIdText, [employee_id], (err, res) => {
     if (err) return next(err);
@@ -138,7 +139,7 @@ router.post('/', (request, response, next) => {
 //   });
 // });
 
-router.put('/:id', (request, response, next) => {
+router.put('/:employee_id', (request, response, next) => {
   const { id } = request.params;
   const { skill_id } = request.body
   const keys = ['skill_rating'];
