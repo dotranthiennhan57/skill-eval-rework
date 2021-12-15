@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
+import { PositionList } from 'src/app/models/position-list';
 import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 // import { HeaderComponent } from 'src/app/components/header/header.component';
 import { EmployeeService } from '../employee.service';
@@ -16,23 +17,9 @@ export class EmployeeEditComponent implements OnInit {
   editMode =false;
   employeeForm: FormGroup;
 
+  currentPosition: PositionList[];
+
   currentEmployee: Employee = {};
-
-
- majorOption: any[] = [
-    {
-      "option": "Angular"
-    },
-    {
-      "option": "React"
-    },
-    {
-      "option": "Data Analyst"
-    },
-    {
-      "option": "Project Management"
-    },
-  ];
 
   constructor(
     private route: ActivatedRoute, 
@@ -50,6 +37,7 @@ export class EmployeeEditComponent implements OnInit {
     //   }
     // );
     this.getEmployee(this.route.snapshot.params['id']);
+    this.getPositionList();
   }
 
   getEmployee(id:any): void {
@@ -64,16 +52,18 @@ export class EmployeeEditComponent implements OnInit {
     
   }
 
-  // onSubmit(){
-  //   if(this.editMode){
-  //     this.employeeService.updateEmployee(this.id, this.employeeForm.value);
-  //   }else {
-  //     this.employeeService.addEmployee(this.employeeForm.value);
-  //   }
-  //   // this.header.onSaveData();
-  //   this.onCancel()
+  getPositionList(): void {
+    this.reworkemployeeService.getPositionList()
+      .subscribe({
+        next: (data) => {
+          this.currentPosition = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 
-  // }
+  
 
   onCancel(){
     this.router.navigate(['../'],{relativeTo:this.route});

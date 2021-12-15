@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
+import { MajorSkill } from 'src/app/models/major-skill.model';
 import { MinorSkill } from 'src/app/models/minor-skill.model';
 import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 
@@ -14,6 +15,8 @@ export class EmployeeDetailComponent implements OnInit {
   currentEmployee: Employee = {};
 
   currentEmployeeAll?: Employee[];
+
+  currentMajorSkills?: MajorSkill[];
 
   currentSubskills?: MinorSkill[];
 
@@ -53,5 +56,18 @@ export class EmployeeDetailComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+  getMajorSkills(): void{
+    this.reworkemployeeService.getMajorSkillsList()
+      .subscribe({
+        next: (data) => {
+          this.currentMajorSkills = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      })
+  }
+
+
 
 }

@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee.model';
+import { MajorSkill } from '../models/major-skill.model';
 import { MinorSkill } from '../models/minor-skill.model';
+import { PositionList } from '../models/position-list';
 
 const baseUrl = 'http://localhost:4580';
 
@@ -19,6 +21,18 @@ export class ReworkemployeeService {
 
   getAllEmployeesSubSkill(employee_id: any): Observable<MinorSkill[]> {
     return this.http.get<MinorSkill[]>(`${baseUrl}/employees/${employee_id}/data`);
+  }
+
+  getMajorSkillsList(): Observable<MajorSkill[]>{
+    return this.http.get<MajorSkill[]>(`${baseUrl}/employees/majorskills`);
+  }
+
+  getAllCoworker(employee_id: any): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${baseUrl}/employees/${employee_id}/coworker`)
+  }
+
+  getPositionList(): Observable<PositionList[]> {
+    return this.http.get<PositionList[]>(`${baseUrl}/employees/position`);
   }
 
 

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './common/services/auth/auth.component';
 import { EmployeeDetailComponent } from './components/dashboard/employee/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './components/dashboard/employee/employee-edit/employee-edit.component';
+import { EmployeeRelationComponent } from './components/dashboard/employee/employee-relation/employee-relation.component';
 import { EmployeeStartComponent } from './components/dashboard/employee/employee-start/employee-start.component';
 import { EmployeeComponent } from './components/dashboard/employee/employee.component';
 import { EmployeesResolverService } from './components/dashboard/employee/employees-resolver.service';
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path:'new', component: EmployeeEditComponent},
     {path:':id', component: EmployeeDetailComponent},
     {path:':id/edit', component: EmployeeEditComponent},
+    {path:':id/coworker', component: EmployeeRelationComponent}
   ]},
   {path: 'auth', component: AuthComponent}
 ];

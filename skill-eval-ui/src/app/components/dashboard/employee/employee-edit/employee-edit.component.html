@@ -60,12 +60,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="inputContact4">Position</label>
                                             <div class="col-sm-9">
-                                                <select id="inputState" class="form-select">
-                                                    <option value="1">Manager</option>
+                                                <select id="inputState" class="form-select" >
+                                                    <option *ngFor= "let currentPositionEl of currentPosition" [value]="currentPositionEl.position_id" > {{currentPositionEl.position_name}} </option>
+                                                    <!-- <option value="1">Manager</option>
                                                     <option value="2">Team Lead</option>
                                                     <option value="3">Senior Employee</option>
                                                     <option value="4">Junior Employee</option>
-                                                    <option value="5">Director</option>
+                                                    <option value="5">Director</option> -->
                                                 </select>
                                             </div>
                                         </div>

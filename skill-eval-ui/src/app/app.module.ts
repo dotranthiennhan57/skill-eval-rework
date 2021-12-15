@@ -17,6 +17,7 @@ import { AuthComponent } from './common/services/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EmployeeRelationComponent } from './components/dashboard/employee/employee-relation/employee-relation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     EmployeeListComponent,
     EmployeeItemComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EmployeeRelationComponent
   ],
   imports: [
     BrowserModule,

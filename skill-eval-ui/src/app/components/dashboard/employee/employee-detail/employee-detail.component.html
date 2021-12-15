@@ -6,11 +6,11 @@
                     <div style="padding-top: 7px;">
                             <div class="panel-body text-center">
                               <div id="banner">
-                              <div class="inline-block">
-                                <img class="img-responsive img-circle rounded-circle btn" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['/employees']" routerLinkActive = "active" style="width: 70px;">
-                              </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <div class="inline-block" style="padding-right: 50%;">
+                                <img class="img-responsive img-circle rounded-circle btn" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
+                              </div>
                               <div class="inline-block" style="text-align: right;">
-                                <img class="img-responsive" src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Ayo" style="width: 70px;">
+                                <img class="img-responsive" src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" [routerLink]= "['./coworker']" routerLinkActive = "active" alt="Ayo" style="width: 70px;">
                               </div>
                               </div>
                                 <h3 class="m0 text-bold">{{currentEmployee.first_name}} {{currentEmployee.last_name}}</h3>
@@ -23,8 +23,33 @@
                                     </h3>
                                 </div>
 
-                                  
-                                    <div class="accordion accordion-flush" id="accordionFlushExample" >
+                                <!--Popup for major skills-->
+                  <!-- Button trigger modal -->
+                  <div style="text-align: right;">
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
+                      Add Skill
+                    </button>
+                  </div> 
+  
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true" >
+                      <div class="modal-dialog">
+                        <div class="modal-content" style="background: #E6E6FA;">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add A Major Skill</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
+                            <a href="/edit.html">{{majorSkillsEl.skill_name}}</a><br/>
+  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                                  <!-- Main skills and subskills components -->
+                                    <div class="accordion accordion-flush" id="accordionFlushExample" style="height:fit-content;">
                                       <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
                                         <h2 class="accordion-header" [id]="'heading'+i" >
                                           <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
@@ -51,70 +76,35 @@
                                             </div>
                                           </button>
                                         </h2>
-                                        <div [id]="'collapse'+i" class="accordion-collapse collapse"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample">
-                                          <div class="accordion-body bgcolorp" *ngFor="let currentSubskillsEl of currentSubskills">
-                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                              <p>{{currentSubskillsEl.skill_name}}</p>
+                                        <div [id]="'collapse'+i" class="accordion-collapse collapse"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
+                                          <div *ngFor="let currentSubskillsEl of currentSubskills">
+                                            <div class="accordion-body bgcolorp" *ngIf="currentEmployeeEl.skill_id == currentSubskillsEl.subskillof" >
+                                              <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                                <p>{{currentSubskillsEl.skill_name}}</p>
+                                              </div>
+                                              <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
+                                                <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
+                                                        step="1" list="volsettings" width="">
+                                                <datalist id="volsettings">
+                                                  <option>0</option>
+                                                  <option>1</option>
+                                                  <option>2</option>
+                                                  <option>3</option>
+                                                  <option>4</option>
+                                                  <option>5</option>
+                                                  <option>6</option>
+                                                  <option>7</option>
+                                                  <option>8</option>
+                                                  <option>9</option>
+                                                  <option>10</option>
+                                                </datalist>
+                                                <p style="font-size: 10px !important;">Value: {{currentSubskillsEl.skill_rating}} <span id="fader"></span></p>
+                                              </div>
+                                              
                                             </div>
-                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                              <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
-                                                      step="1" list="volsettings" width="">
-                                              <datalist id="volsettings">
-                                                <option>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                              </datalist>
-                                              <p style="font-size: 10px !important;">Value: {{currentSubskillsEl.skill_rating}} <span id="fader"></span></p>
-                                            </div>
-                                            <!-- <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                              <p>Minor Skill</p>
-                                            </div>
-                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                              <input type="range" min="0" max="10" value="5" id="fader" 
-                                                      step="1" list="volsettings" width="">
-                                              <datalist id="volsettings">
-                                                <option>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                              </datalist>
-                                            </div>
-                                            <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
-                                              <p>Minor Skill</p>
-                                            </div>
-                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; ">
-                                              <input type="range" min="0" max="10" value="5" id="fader" 
-                                                      step="1" list="volsettings" width="">
-                                              <datalist id="volsettings">
-                                                <option>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                              </datalist>
-                                            </div> -->
                                           </div>
+
+
                                         </div>
                                       </div>
                                      
@@ -126,7 +116,7 @@
                                 <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
                               </div>
                             </div> -->
-                            <div class="row">
+                            <!-- <div class="row">
                               <div class="col-sm-4" style=" padding-top: 25px;  width: auto !important;">
                                 <div class="container" >
                                   <div class="center" style="padding-left: 25%;">                                     
@@ -146,7 +136,7 @@
                                     <a class="btn" href="#" style="color: #ffffff; ">Submit</a>
                                   </div>
                               </div>
-                            </div>
+                            </div> -->
                     </div>
         </div>
         </div>

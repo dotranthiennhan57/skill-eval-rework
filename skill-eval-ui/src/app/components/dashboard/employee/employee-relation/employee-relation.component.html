@@ -1,0 +1,42 @@
+<div class="container bootstrap snippets bootdey">
+    <div class="row ng-scope">
+        <div class="col-md-6 container" style="padding-top: 5%;">
+            <div class="panel panel-default" style="border-radius: 25px;">
+                <div class="panel-body container" style="padding-top: 25px; background-color: #E6E6FA; border-radius: 25px; padding-bottom: 5%;">
+                    <div style="padding-top: 7px;">
+                            <div class="panel-body text-center">
+                                <div style="width: 100px;">
+                                    <img class="img-responsive btn" src="D:\Work\Learning\app_Webpage/MicrosoftTeams-image.png" alt="Henry" style="width: 70px;" href="D:\Work\Learning\app_Webpage\New_ideas\New folder/New_look_part_one.html">
+                                    <h3>Employees Relation</h3>
+                                </div>
+                                
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4" style="padding-top: 3%;" *ngFor="let employee of employees; let i = index">
+                                            <div class="card p-0">
+                                                <a style= "cursor: pointer;"
+                                                [routerLink]= "['../../'+ employee.employee_id]"
+                                                routerLinkActive = "active">
+                                                <div class="card-image"> <img src="https://media.glassdoor.com/sqll/266935/infodat-international-squarelogo-1489091292506.png" alt=""> </div>
+                                                <div class="card-content d-flex flex-column align-items-center">
+                                                    <h4 class="pt-2">{{employee.first_name}} {{employee.last_name}}</h4>
+                                                    <h5>ID#: {{employee.employee_id}}</h5>
+                                                    <ul class="social-icons d-flex justify-content-center">
+                                                        <li style="--i:1"> <a href="#"> <span class="fab fa-facebook"></span> </a> </li>
+                                                        <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
+                                                        <li style="--i:3"> <a href="#"> <span class="fab fa-instagram"></span> </a> </li>
+                                                    </ul>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                    </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
