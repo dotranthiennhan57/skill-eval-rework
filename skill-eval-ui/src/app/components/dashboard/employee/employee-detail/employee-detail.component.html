@@ -26,7 +26,7 @@
                                 <!--Popup for major skills-->
                   <!-- Button trigger modal -->
                   <div style="text-align: right;">
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
+                    <button type="button" class="btn bgcldp ftclff" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
                       Add Skill
                     </button>
                   </div> 
@@ -49,14 +49,14 @@
                     </div>
 
                                   <!-- Main skills and subskills components -->
-                                    <div class="accordion accordion-flush" id="accordionFlushExample" style="height:fit-content;">
+                                    <div class="accordion accordion-flush htfitc" id="accordionFlushExample" style="height:fit-content;">
                                       <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
                                         <h2 class="accordion-header" [id]="'heading'+i" >
                                           <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
                                             <div class="col-md-4">
                                               {{currentEmployeeEl.skill_name}}
                                             </div>
-                                            <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block; padding-top: 20px !important;">
+                                            <div class="col-md-4 ad-left15 pad-color-p dislinblc pt20" style="display: inline-block; padding-top: 20px !important;">
                                               <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
                                                       step="1" list="volsettings" width="">
                                               <datalist id="volsettings">
