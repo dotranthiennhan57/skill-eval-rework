@@ -126,17 +126,24 @@ router.get('/:employee_id/coworker', (request, response, next) => {
 });
 
 //POST, Experimental, not in use
-router.post('/', (request, response, next) => {
-  // const { id } = request.params;
-  const { employee_id, skill_id, skill_rating } = request.body;
+router.post('/:employee_id', (request, response, next) => {
+  const {employee_id} = request.params
+  const {skill_id, skill_rating} = request.body;
 
   pool.query(
-    'INSERT INTO Evaluation(employee_id, skill_id, skill_rating) VALUES($1, $2, $3)',
+    `insert into evaluation (employee_id, skill_id, skill_rating)
+    select $1, $2, $3
+    where
+      not exists(
+        select employee_id, skill_id 
+        from evaluation 
+        where employee_id = $1 and skill_id = $2);
+    `,
     [employee_id, skill_id, skill_rating],
     (err, res) => {
       if (err) return next(err);
 
-      response.redirect('/employees');
+      response.json(res.rows);
     }
   );
 });
