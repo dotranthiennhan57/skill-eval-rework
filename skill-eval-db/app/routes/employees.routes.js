@@ -125,7 +125,7 @@ router.get('/:employee_id/coworker', (request, response, next) => {
   });
 });
 
-//POST, Experimental, not in use
+//POST, Add main skills now
 router.post('/:employee_id', (request, response, next) => {
   const {employee_id} = request.params
   const {skill_id, skill_rating} = request.body;
@@ -148,6 +148,7 @@ router.post('/:employee_id', (request, response, next) => {
   );
 });
 
+//PUT, update any skill, working
 router.put('/:employee_id', (request, response, next) =>{
   const {employee_id} = request.params;
   const {skill_id, skill_rating} = request.body;
@@ -163,6 +164,23 @@ router.put('/:employee_id', (request, response, next) =>{
       employee_id = $3
     `,
     [skill_rating,skill_id,employee_id],
+    (err, res) => {
+      if (err) return next(err);
+
+      response.json(res.rows);
+    })
+});
+
+//DELETE, delete a main skill, works!!
+router.delete('/:employee_id', (request, response, next) => {
+  const {employee_id} = request.params;
+  const {skill_id} = request.body;
+
+  pool.query(
+    `
+    DELETE FROM evaluation 
+    WHERE employee_id = $1 and skill_id = $2;`,
+    [employee_id, skill_id], 
     (err, res) => {
       if (err) return next(err);
 
