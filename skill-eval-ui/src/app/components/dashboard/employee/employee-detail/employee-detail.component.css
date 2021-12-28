@@ -28,6 +28,31 @@ flex-wrap: nowrap !important;
 justify-content: center !important;
 }
 
+
+/* Breadcrumb  */
+ul.breadcrumb {
+padding: 10px 16px;
+list-style: none;
+}
+ul.breadcrumb li {
+display: inline;
+font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+padding: 8px;
+color: black;
+content: "/\00a0";
+}
+ul.breadcrumb li a {
+color: #432850;
+text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+color: #432850;
+text-decoration: underline;
+}
+
+
 .pt5 {
 padding-top: 5% !important;
 }

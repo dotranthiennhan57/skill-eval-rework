@@ -131,15 +131,15 @@ router.post('/:employee_id', (request, response, next) => {
   const {skill_id, skill_rating} = request.body;
 
   pool.query(
-    `insert into evaluation (employee_id, skill_id, skill_rating)
-    select $1, $2, $3
+    `insert into evaluation (employee_id, skill_id)
+    select $1, $2
     where
       not exists(
         select employee_id, skill_id 
         from evaluation 
         where employee_id = $1 and skill_id = $2);
     `,
-    [employee_id, skill_id, skill_rating],
+    [employee_id, skill_id],
     (err, res) => {
       if (err) return next(err);
 

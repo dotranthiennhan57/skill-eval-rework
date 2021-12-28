@@ -5,6 +5,10 @@ insert into evaluation (employee_id, skill_id, skill_rating) values (1, 12 , 10)
 insert into evaluation (employee_id, skill_id, skill_rating) values (1, 13 , 10);
 insert into evaluation (employee_id, skill_id, skill_rating) values (1, 14 , 10);
 
+insert into evaluation (employee_id, skill_id, skill_rating) values (1, 9 , 10);
+insert into evaluation (employee_id, skill_id, skill_rating) values (1, 91 , 10);
+insert into evaluation (employee_id, skill_id, skill_rating) values (1, 92 , 10);
+
 --Ayo's Skill
 insert into evaluation (employee_id, skill_id, skill_rating) values (2, 2 , 10);
 insert into evaluation (employee_id, skill_id, skill_rating) values (2, 21 , 10);
