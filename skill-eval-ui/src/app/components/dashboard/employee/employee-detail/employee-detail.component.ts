@@ -20,6 +20,10 @@ export class EmployeeDetailComponent implements OnInit {
 
   currentSubskills?: MinorSkill[];
 
+  submitted = false;
+
+  idofskill:any = "";
+
   constructor(
     private reworkemployeeService: ReworkemployeeService,
     private route: ActivatedRoute,
@@ -67,6 +71,25 @@ export class EmployeeDetailComponent implements OnInit {
         error: (e) => console.error(e)
       })
   }
+
+  addMajorSkill(): void{
+    const id = this.route.snapshot.params['id'];
+
+    const data = {
+      skill_id: this.idofskill
+    }
+    
+    this.reworkemployeeService.addEmployeeMajorSkill(id, data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.submitted = true;
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+
 
 
 

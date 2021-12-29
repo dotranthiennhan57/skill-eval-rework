@@ -46,7 +46,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
-                            <a href="/edit.html">{{majorSkillsEl.skill_name}}</a><br/>
+                            <a href="/edit.html" (idofskill)="majorSkillsEl.skill_id" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a><br/>
   
                           </div>
                         </div>

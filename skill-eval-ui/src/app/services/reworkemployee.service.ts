@@ -40,6 +40,14 @@ export class ReworkemployeeService {
     return this.http.get<Employee[]>(`${baseUrl}/employees/${employee_id}`);
   }
 
+  addEmployeeMajorSkill(employee_id:any, data:any): Observable<any>{
+    return this.http.post(`${baseUrl}/${employee_id}`,data)
+  }
+
+  editEmployeeMajorSkill(employee_id:any, data:any): Observable<any>{
+    return this.http.put(`${baseUrl}/${employee_id}`, data)
+  }
+
   // getSkill(employee_id: any, skill_id: any): Observable<MinorSkill[]> {
   //   return this.http.get<MinorSkill[]>(`${baseUrl}/${employee_id}/${skill_id}`);
   // }
