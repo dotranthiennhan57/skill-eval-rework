@@ -126,9 +126,8 @@ router.get('/:employee_id/coworker', (request, response, next) => {
 });
 
 //POST, Add main skills now
-router.post('/:employee_id', (request, response, next) => {
-  const {employee_id} = request.params
-  const {skill_id, skill_rating} = request.body;
+router.post('/evaluation', (request, response, next) => {
+  const {employee_id, skill_id} = request.body;
 
   pool.query(
     `insert into evaluation (employee_id, skill_id)
@@ -172,9 +171,8 @@ router.put('/:employee_id', (request, response, next) =>{
 });
 
 //DELETE, delete a main skill, works!!
-router.delete('/:employee_id', (request, response, next) => {
-  const {employee_id} = request.params;
-  const {skill_id} = request.body;
+router.delete('/delete', (request, response, next) => {
+  const {employee_id, skill_id} = request.body;
 
   pool.query(
     `

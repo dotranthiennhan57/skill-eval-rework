@@ -22,8 +22,6 @@ export class EmployeeDetailComponent implements OnInit {
 
   submitted = false;
 
-  idofskill:any = "";
-
   constructor(
     private reworkemployeeService: ReworkemployeeService,
     private route: ActivatedRoute,
@@ -70,16 +68,17 @@ export class EmployeeDetailComponent implements OnInit {
         },
         error: (e) => console.error(e)
       })
-  }
+  };
 
-  addMajorSkill(): void{
-    const id = this.route.snapshot.params['id'];
+  addMajorSkill(event, skill_id, employee_id): void{
+    if(event) event.preventDefault();
 
     const data = {
-      skill_id: this.idofskill
+      employee_id: employee_id,
+      skill_id: skill_id
     }
     
-    this.reworkemployeeService.addEmployeeMajorSkill(id, data)
+    this.reworkemployeeService.addEmployeeMajorSkill(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -87,6 +86,30 @@ export class EmployeeDetailComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
+    window.location.reload();
+  };
+
+  deleteMajorSkill(event, skill_id, employee_id): void{
+    if(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const data ={
+      employee_id: employee_id,
+      skill_id: skill_id
+    }
+
+    this.reworkemployeeService.deleteEmployeeMajorSkill(data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+
+      // window.location.reload();
   }
 
 
