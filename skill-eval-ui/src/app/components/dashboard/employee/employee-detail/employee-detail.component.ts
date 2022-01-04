@@ -90,11 +90,11 @@ export class EmployeeDetailComponent implements OnInit {
     window.location.reload();
   };
 
-  deleteMajorSkill(event, skill_id, employee_id): void{
-    if(event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+  deleteMajorSkill( skill_id, employee_id): void{
+    // if(event) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
 
     const data ={
       employee_id: employee_id,
@@ -109,7 +109,7 @@ export class EmployeeDetailComponent implements OnInit {
         error: (e) => console.error(e)
       });
 
-      // window.location.reload();
+      window.location.reload();
   }
 
 

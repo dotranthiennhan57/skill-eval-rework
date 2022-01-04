@@ -2,19 +2,20 @@
     <div class="row ng-scope">
         <div class="col-md-6 container" style="padding-top: 5%;">
             <div class="panel panel-default" style="border-radius: 25px;">
-                <div class="panel-body container" style="padding-top: 25px; background-color: #d5d5e9; border-radius: 25px; padding-bottom: 5%;">
+                <div class="panel-body container pt25px" style="background-color: #d5d5e9; border-radius: 25px; padding-bottom: 5%;">
                     <div style="padding-top: 7px;">
                             <div class="panel-body text-center">
                               <div id="banner">
-                                <div class="inline-block pr50">
-                                  <ul class="breadcrumb">
+                                <div class="row inline-block">
+                                  <img class="col-md-4 img-responsive btn" style="width:fit-content;" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
+                                  <ul class="breadcrumb col-md-8">
                                     <li><a href="#">Henry</a></li>
                                     <li><a href="#">Ayo</a></li>
                                     <li>Nhan</li>
                                   </ul>
-                                  <img class="img-responsive img-circle rounded-circle btn" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
+                                  
                                 </div>
-                              <div class="inline-block" style="text-align: right;">
+                              <div class="inline-block txtalir">
                                 <img class="img-responsive" src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" [routerLink]= "['./coworker']" routerLinkActive = "active" alt="Ayo" style="width: 70px;">
                               </div>
                               </div>
@@ -30,10 +31,21 @@
 
                                 <!--Popup for major skills-->
                   <!-- Button trigger modal -->
-                  <div style="text-align: right;">
-                    <button type="button" class="btn bgcldp ftclff" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
+                  <div style="text-align: right;" class="pb5">
+                    <button type="button" class="btn bgcldp ftclff " data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
                       Add Skill
                     </button>
+                    <!-- <button type="button" class="btn">
+  
+                      <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+              
+                    </button>
+              
+                    <button type="button" class="btn">
+              
+                      <img src="../../../../../assets/Delete_Button.png" alt="Remove" style="width: 25px;">
+              
+                    </button> -->
                   </div> 
   
                     <!-- Modal -->
@@ -56,12 +68,12 @@
                                   <!-- Main skills and subskills components -->
                                     <div class="accordion accordion-flush htfitc" id="accordionFlushExample" style="height:fit-content;">
                                       <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
-                                        <h2 class="accordion-header" [id]="'heading'+i" >
-                                          <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
-                                            <div class="col-md-4">
+                                        <h5 class="accordion-header pad-color-p" [id]="'heading'+i" >
+                                          <div class="row">
+                                            <a class="col-md-4 pad-color-p nodeco textaligl" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
                                               {{currentEmployeeEl.skill_id}} - {{currentEmployeeEl.skill_name}}
-                                            </div>
-                                            <div class="col-md-4 ad-left15 pad-color-p dislinblc pt20" style="display: inline-block; padding-top: 20px !important;">
+                                            </a>
+                                            <div class="col-md-4 ad-left15 pad-color-p dislinblc range-slider grad " style="display: inline-block; ">
                                               <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
                                                       step="1" list="volsettings" width="">
                                               <datalist id="volsettings">
@@ -79,19 +91,36 @@
                                               </datalist>
                                               <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
                                             </div>
-                                            <button type="button" class="btn btn-success">
-                                              Save
-                                            </button>
-                                            <!-- <button type="button" class="btn btn-danger" (click)="deleteMajorSkill(currentEmployeeEl.skill_id, currentEmployee.employee_id)">
-                                              Remove
-                                            </button> -->
-                                            <a href="#" (click)="deleteMajorSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id)" > Delete </a>
-                                          </button>
-                                        </h2>
-                                        <div [id]="'collapse'+i" class="accordion-collapse collapse"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
+
+                                            <!-- <div class="col-md-2 pad-color-p">
+                                              <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+                                            </div> -->
+
+                                            <div class="col-md-2 pad-color-p">
+                                              <img src="../../../../../assets/Delete_Button.png" class="conyalig" alt="Remove" style="width: 20px;" (click)="deleteMajorSkill(currentEmployeeEl.skill_id, currentEmployee.employee_id)">
+                                            </div>
+                                            
+
+                                            <!-- <div class="col-md-2 pad-color-p">
+                                              <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i"></button>
+                                            </div> -->
+                                            
+                                          </div>
+                                            
+                                          
+              
+                                            
+                                          
+                                        </h5>
+                                        
+                                        
+                                        <div [id]="'collapse'+i" class="accordion-collapse collapse pad-color-p"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
+                                          <div class="col-md-12 pad-color-p txtalir" style="padding-right: 25%;">
+                                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+                                          </div>
                                           <div *ngFor="let currentSubskillsEl of currentSubskills">
                                             <div class="accordion-body bgcolorp" *ngIf="currentEmployeeEl.skill_id == currentSubskillsEl.subskillof" >
-                                              <div class="col-md-6" style="display: inline-block; padding-bottom: 4px;">
+                                              <div class="col-md-6 textaligl" style="display: inline-block; padding-bottom: 4px;">
                                                 <p>{{currentSubskillsEl.skill_name}}</p>
                                               </div>
                                               <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
