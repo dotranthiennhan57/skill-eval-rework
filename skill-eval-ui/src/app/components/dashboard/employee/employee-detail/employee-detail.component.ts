@@ -90,11 +90,9 @@ export class EmployeeDetailComponent implements OnInit {
     window.location.reload();
   };
 
-  deleteMajorSkill( skill_id, employee_id): void{
-    // if(event) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
+  deleteMajorSkill( event ,skill_id, employee_id): void{
+    if(event) event.preventDefault();
+
 
     const data ={
       employee_id: employee_id,
@@ -105,6 +103,7 @@ export class EmployeeDetailComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.submitted = true;
         },
         error: (e) => console.error(e)
       });

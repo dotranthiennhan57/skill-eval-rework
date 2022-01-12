@@ -1,186 +1,192 @@
 <div class="container bootstrap snippets bootdey">
-    <div class="row ng-scope">
-        <div class="col-md-6 container" style="padding-top: 5%;">
-            <div class="panel panel-default" style="border-radius: 25px;">
-                <div class="panel-body container pt25px" style="background-color: #d5d5e9; border-radius: 25px; padding-bottom: 5%;">
-                    <div style="padding-top: 7px;">
-                            <div class="panel-body text-center">
-                              <div id="banner">
-                                <div class="row inline-block">
-                                  <img class="col-md-4 img-responsive btn" style="width:fit-content;" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
-                                  <ul class="breadcrumb col-md-8">
-                                    <li><a href="#">Henry</a></li>
-                                    <li><a href="#">Ayo</a></li>
-                                    <li>Nhan</li>
-                                  </ul>
-                                  
-                                </div>
-                              <div class="inline-block txtalir">
-                                <img class="img-responsive" src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" [routerLink]= "['./coworker']" routerLinkActive = "active" alt="Ayo" style="width: 70px;">
-                              </div>
-                              </div>
-                                <h3 class="m0 text-bold">{{currentEmployee.first_name}} {{currentEmployee.last_name}}</h3>
-                                <div class="text-sm">
-                                    <p>Position: {{currentEmployee.position_name}} <br/>ID#: {{currentEmployee.employee_id}} </p>
-                                </div>
-                                <div>
-                                    <h3>
-                                        Rate Skills
-                                    </h3>
-                                </div>
+  <div class="row ng-scope">
+    <div class="col-md-6 container" style="padding-top: 5%;">
+      <div class="panel panel-default" style="border-radius: 25px;">
+        <div class="panel-body container pt25px" style="background-color: #d5d5e9; border-radius: 25px; padding-bottom: 5%;">
+          <div style="padding-top: 7px;">
+            <div class="panel-body text-center">
+              <div id="banner">
+                <div class="row inline-block">
+                  <img class="col-md-4 img-responsive btn" style="width:fit-content;" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
+                  <ul class="breadcrumb col-md-8">
+                    <li><a href="#">Henry</a></li>
+                    <li><a href="#">Ayo</a></li>
+                    <li>Nhan</li>
+                  </ul>
+                  
+                </div>
+                <div class="inline-block txtalir">
+                  <img class="img-responsive" src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" [routerLink]= "['./coworker']" routerLinkActive = "active" alt="Ayo" style="width: 70px;">
+                </div>
+              </div>
+                <h3 class="m0 text-bold">{{currentEmployee.first_name}} {{currentEmployee.last_name}}</h3>
+                <div class="text-sm">
+                    <p>Position: {{currentEmployee.position_name}} <br/>ID#: {{currentEmployee.employee_id}} </p>
+                </div>
+                <div>
+                    <h3>
+                        Rate Skills
+                    </h3>
+                </div>
 
-                                <!--Popup for major skills-->
+                  <!--Popup for major skills-->
                   <!-- Button trigger modal -->
                   <div style="text-align: right;" class="pb5">
                     <button type="button" class="btn bgcldp ftclff " data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #7665c9; color: #ffffff;" (click)="getMajorSkills()">
                       Add Skill
-                    </button>
-                    <!-- <button type="button" class="btn">
-  
-                      <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
-              
-                    </button>
-              
-                    <button type="button" class="btn">
-              
-                      <img src="../../../../../assets/Delete_Button.png" alt="Remove" style="width: 25px;">
-              
-                    </button> -->
+                    </button>                                    
                   </div> 
-  
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                      aria-hidden="true" >
-                      <div class="modal-dialog">
-                        <div class="modal-content" style="background: #E6E6FA;">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add A Major Skill</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                  <!-- Modal add -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" >
+                    <div class="modal-dialog">
+                      <div class="modal-content" style="background: #E6E6FA;">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Add A Major Skill</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
+                          <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a><br/>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Button trigger modal delete -->
+                  <!-- <div style="text-align: right;" class="pb5">
+                    <button type="button" class="btn bgcldp ftclff " data-bs-toggle="modal" data-bs-target="#exampleModal2" style="background-color: #ff0000; color: #ffffff;" (click)="getMajorSkills()">
+                      Delete
+                    </button>                                    
+                  </div> -->
+
+                  <!-- Modal delete -->
+                  <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                    aria-hidden="true" >
+                    <div class="modal-dialog">
+                      <div class="modal-content" style="background: #E6E6FA;">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel2">Delete A Major Skill</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
+                          <a href="#" (click)= "deleteMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a><br/>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                    <!-- Main skills and subskills components -->
+                    <div class="accordion accordion-flush htfitc" id="accordionFlushExample" style="height:fit-content;">
+                      <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
+                        <h5 class="accordion-header pad-color-p" [id]="'heading'+i" >
+                          <div class="row">
+                            <a class="col-md-4 pad-color-p nodeco textaligl" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                              {{currentEmployeeEl.skill_id}} - {{currentEmployeeEl.skill_name}}
+                            </a>
+                            <div class="col-md-4 ad-left15 pad-color-p dislinblc range-slider grad " style="display: inline-block; ">
+                              <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
+                                      step="1" list="volsettings" width="">
+                              <datalist id="volsettings">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                              </datalist>
+                              <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
+                            </div>
+
+                            <!-- <div class="col-md-2 pad-color-p">
+                              <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+                            </div>  -->
+
+                            <div class="col-md-2 pad-color-p">
+                              <img src="../../../../../assets/Delete_Button.png" class="conyalig" alt="Remove" style="width: 20px;" (click)="deleteMajorSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id)">
+                            </div>
+                            
+
+                            <div class="col-md-2 pad-color-p">
+                              <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i"></button>
+                            </div>
+                            
                           </div>
-                          <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
-                            <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a><br/>
-  
+                        </h5>
+                        
+                        
+                        <div [id]="'collapse'+i" class="accordion-collapse collapse pad-color-p"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
+                          <div class="col-md-12 pad-color-p txtalir" style="padding-right: 25%;">
+                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+                          </div>
+                          <div *ngFor="let currentSubskillsEl of currentSubskills">
+                            <div class="accordion-body bgcolorp" *ngIf="currentEmployeeEl.skill_id == currentSubskillsEl.subskillof" >
+                              <div class="col-md-6 textaligl" style="display: inline-block; padding-bottom: 4px;">
+                                <p>{{currentSubskillsEl.skill_name}}</p>
+                              </div>
+                              <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
+                                <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
+                                        step="1" list="volsettings" width="">
+                                <datalist id="volsettings">
+                                  <option>0</option>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                  <option>9</option>
+                                  <option>10</option>
+                                </datalist>
+                                <p style="font-size: 10px !important;">Value: {{currentSubskillsEl.skill_rating}} <span id="fader"></span></p>
+                              </div>
+                              
+                            </div>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+            </div> 
+                  <!-- <div style="padding-left: 10%; padding-top: 25px;">
+                    <div class="text-center" style="padding-bottom: 20px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
+                      <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
+                    </div>
+                  </div> -->
+                  <!-- <div class="row">
+                    <div class="col-sm-4" style=" padding-top: 25px;  width: auto !important;">
+                      <div class="container" >
+                        <div class="center" style="padding-left: 25%;">                                     
+                          <div class="text-center" style=" padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
+                            <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
                           </div>
                         </div>
                       </div>
                     </div>
-
-                                  <!-- Main skills and subskills components -->
-                                    <div class="accordion accordion-flush htfitc" id="accordionFlushExample" style="height:fit-content;">
-                                      <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
-                                        <h5 class="accordion-header pad-color-p" [id]="'heading'+i" >
-                                          <div class="row">
-                                            <a class="col-md-4 pad-color-p nodeco textaligl" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
-                                              {{currentEmployeeEl.skill_id}} - {{currentEmployeeEl.skill_name}}
-                                            </a>
-                                            <div class="col-md-4 ad-left15 pad-color-p dislinblc range-slider grad " style="display: inline-block; ">
-                                              <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
-                                                      step="1" list="volsettings" width="">
-                                              <datalist id="volsettings">
-                                                    <option>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
-                                              </datalist>
-                                              <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
-                                            </div>
-
-                                            <!-- <div class="col-md-2 pad-color-p">
-                                              <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
-                                            </div> -->
-
-                                            <div class="col-md-2 pad-color-p">
-                                              <img src="../../../../../assets/Delete_Button.png" class="conyalig" alt="Remove" style="width: 20px;" (click)="deleteMajorSkill(currentEmployeeEl.skill_id, currentEmployee.employee_id)">
-                                            </div>
-                                            
-
-                                            <!-- <div class="col-md-2 pad-color-p">
-                                              <button class="accordion-button collapsed pad-color-p"  type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i"></button>
-                                            </div> -->
-                                            
-                                          </div>
-                                            
-                                          
-              
-                                            
-                                          
-                                        </h5>
-                                        
-                                        
-                                        <div [id]="'collapse'+i" class="accordion-collapse collapse pad-color-p"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
-                                          <div class="col-md-12 pad-color-p txtalir" style="padding-right: 25%;">
-                                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
-                                          </div>
-                                          <div *ngFor="let currentSubskillsEl of currentSubskills">
-                                            <div class="accordion-body bgcolorp" *ngIf="currentEmployeeEl.skill_id == currentSubskillsEl.subskillof" >
-                                              <div class="col-md-6 textaligl" style="display: inline-block; padding-bottom: 4px;">
-                                                <p>{{currentSubskillsEl.skill_name}}</p>
-                                              </div>
-                                              <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                                <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
-                                                        step="1" list="volsettings" width="">
-                                                <datalist id="volsettings">
-                                                  <option>0</option>
-                                                  <option>1</option>
-                                                  <option>2</option>
-                                                  <option>3</option>
-                                                  <option>4</option>
-                                                  <option>5</option>
-                                                  <option>6</option>
-                                                  <option>7</option>
-                                                  <option>8</option>
-                                                  <option>9</option>
-                                                  <option>10</option>
-                                                </datalist>
-                                                <p style="font-size: 10px !important;">Value: {{currentSubskillsEl.skill_rating}} <span id="fader"></span></p>
-                                              </div>
-                                              
-                                            </div>
-                                          </div>
-
-
-                                        </div>
-                                      </div>
-                                     
-                                    
-                                  </div>
-                            </div>
-                            <!-- <div style="padding-left: 10%; padding-top: 25px;">
-                              <div class="text-center" style="padding-bottom: 20px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
-                                <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
-                              </div>
-                            </div> -->
-                            <!-- <div class="row">
-                              <div class="col-sm-4" style=" padding-top: 25px;  width: auto !important;">
-                                <div class="container" >
-                                  <div class="center" style="padding-left: 25%;">                                     
-                                    <div class="text-center" style=" padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
-                                      <a class="btn" href="#" style="color: #ffffff; ">Add Skill</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-4" style="align-items: center; padding-top: 25px; width: auto !important;">                                      
-                                <div class="text-center center" style="padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
-                                  <a class="btn" href="#" [routerLink]= "['./edit']" routerLinkActive = "active" style="color: #ffffff; ">Edit</a>
-                                </div>
-                            </div>
-                              <div class="col-sm-4" style="align-items: center; padding-top: 25px; width: auto !important;">                                      
-                                  <div class="text-center center" style="padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
-                                    <a class="btn" href="#" style="color: #ffffff; ">Submit</a>
-                                  </div>
-                              </div>
-                            </div> -->
+                    <div class="col-sm-4" style="align-items: center; padding-top: 25px; width: auto !important;">                                      
+                      <div class="text-center center" style="padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
+                        <a class="btn" href="#" [routerLink]= "['./edit']" routerLinkActive = "active" style="color: #ffffff; ">Edit</a>
+                      </div>
+                  </div>
+                    <div class="col-sm-4" style="align-items: center; padding-top: 25px; width: auto !important;">                                      
+                        <div class="text-center center" style="padding-bottom: 15px; background-color: #7665c9; border-radius: 25%; width:105px; height: 40px;">
+                          <a class="btn" href="#" style="color: #ffffff; ">Submit</a>
+                        </div>
                     </div>
+                  </div> -->
+          </div>
         </div>
-        </div>
-        </div>
-    
+      </div>
+    </div>  
+  </div>
 </div>
