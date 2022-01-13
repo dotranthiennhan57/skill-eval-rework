@@ -61,6 +61,20 @@ router.get('/majorskills', (request, response, next) => {
   });
 });
 
+//Get all subskills
+router.get('/subskills', (request, response, next) => {
+  const getAllPositionText = `
+    SELECT * 
+    FROM skills s
+    WHERE subskillof is not null;
+  `
+  pool.query(getAllPositionText, (err, res) => {
+    if (err) return next(err);
+
+    response.json(res.rows);
+  });
+});
+
 //Get single employee by employee_id(show as param)
 router.get('/:employee_id', (request, response, next) => {
   const { employee_id } = request.params;
@@ -131,7 +145,7 @@ router.post('/evaluation', (request, response, next) => {
 
   pool.query(
     `insert into evaluation (employee_id, skill_id)
-    select $1, $2
+    select $1, $2 
     where
       not exists(
         select employee_id, skill_id 
@@ -146,6 +160,8 @@ router.post('/evaluation', (request, response, next) => {
     }
   );
 });
+
+//POST, auto add subskills
 
 //PUT, update any skill, working
 router.put('/:employee_id', (request, response, next) =>{

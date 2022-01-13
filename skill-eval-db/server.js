@@ -2,6 +2,7 @@ const express =  require('express');
 const cors = require("cors");
 const routes = require('./app/routes/index.routes');
 const pool = require('./app/db');
+const Sequelize = require('sequelize');
 
 const app = express();
 
@@ -28,6 +29,12 @@ app.use((err, req, res, next) => {
 //routes
 // require('./app/routes/employees')(app);
 
+//Connect Sequelize to PostgreSQL Database
+var sequelize = new Sequelize('SkillEvaluation', 'node_user', 'node_password', {
+  host: "localhost", //your server
+  port: 4580,//server port
+  dialect: 'postgres'
+});
 
 
 module.exports = app;
