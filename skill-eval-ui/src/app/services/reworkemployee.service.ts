@@ -27,6 +27,10 @@ export class ReworkemployeeService {
     return this.http.get<MajorSkill[]>(`${baseUrl}/employees/majorskills`);
   }
 
+  getSubSkillsList(): Observable<MinorSkill[]>{
+    return this.http.get<MinorSkill[]>(`${baseUrl}/employees/subskills`);
+  }
+
   getAllCoworker(employee_id: any): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${baseUrl}/employees/${employee_id}/coworker`)
   }
@@ -45,11 +49,11 @@ export class ReworkemployeeService {
   }
 
   deleteEmployeeMajorSkill(data:any): Observable<any>{
-    return this.http.delete(`${baseUrl}/employees/delete`, data)
+    return this.http.delete(`${baseUrl}/employees/delete`, {body: data})
   }
 
-  editEmployeeMajorSkill(employee_id:any, data:any): Observable<any>{
-    return this.http.put(`${baseUrl}/${employee_id}`, data)
+  editEmployeeMajorSkill(data:any): Observable<any>{
+    return this.http.put(`${baseUrl}/employees/updateSkills`, data)
   }
 
 

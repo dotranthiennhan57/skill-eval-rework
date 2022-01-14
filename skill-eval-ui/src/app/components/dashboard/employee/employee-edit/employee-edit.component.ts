@@ -5,7 +5,6 @@ import { Employee } from 'src/app/models/employee.model';
 import { PositionList } from 'src/app/models/position-list';
 import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
 // import { HeaderComponent } from 'src/app/components/header/header.component';
-import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee-edit',

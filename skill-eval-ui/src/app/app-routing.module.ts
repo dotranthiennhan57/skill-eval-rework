@@ -7,7 +7,7 @@ import { EmployeeEditComponent } from './components/dashboard/employee/employee-
 import { EmployeeRelationComponent } from './components/dashboard/employee/employee-relation/employee-relation.component';
 import { EmployeeStartComponent } from './components/dashboard/employee/employee-start/employee-start.component';
 import { EmployeeComponent } from './components/dashboard/employee/employee.component';
-import { EmployeesResolverService } from './components/dashboard/employee/employees-resolver.service';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/employees', pathMatch:'full'},

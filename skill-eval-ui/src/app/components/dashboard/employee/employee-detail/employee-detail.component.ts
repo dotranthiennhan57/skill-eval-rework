@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute,Params, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { MajorSkill } from 'src/app/models/major-skill.model';
@@ -10,7 +10,7 @@ import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.css']
 })
-export class EmployeeDetailComponent implements OnInit {
+export class EmployeeDetailComponent implements OnInit, OnChanges {
 
   currentEmployee: Employee = {};
 
@@ -29,9 +29,14 @@ export class EmployeeDetailComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-      this.getEmployee(this.route.snapshot.params['id']);
-      this.getSubskill(this.route.snapshot.params['id']);
-    }
+    this.getEmployee(this.route.snapshot.params['id']);
+    this.getSubskill(this.route.snapshot.params['id']);
+  }
+
+  ngOnChanges(): void{
+    this.getEmployee(this.route.snapshot.params['id']);
+    this.getSubskill(this.route.snapshot.params['id']);
+  }
   
 //Notes: Ayo said the data retrieved from http call is always an array. So set property(type: object) to array index
   getEmployee(id:any): void {
@@ -67,7 +72,16 @@ export class EmployeeDetailComponent implements OnInit {
           console.log(data);
         },
         error: (e) => console.error(e)
-      })
+      });
+
+    this.reworkemployeeService.getSubSkillsList()
+      .subscribe({
+        next: (data) => {
+          this.currentSubskills = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   };
 
   addMajorSkill(event, skill_id, employee_id): void{
@@ -88,6 +102,7 @@ export class EmployeeDetailComponent implements OnInit {
       });
 
     window.location.reload();
+    // this.ngOnChanges();
   };
 
   deleteMajorSkill( event ,skill_id, employee_id): void{
@@ -109,10 +124,29 @@ export class EmployeeDetailComponent implements OnInit {
       });
 
       window.location.reload();
-  }
+      // this.ngOnChanges();
+  };
 
+  updateSkill(event, skill_id, employee_id, skill_rating): void {
+    // if(event) event.preventDefault();
+    
+    const data ={
+      employee_id: employee_id,
+      skill_id: skill_id,
+      skill_rating: skill_rating = event.target.value
+    }
 
+    this.reworkemployeeService.editEmployeeMajorSkill(data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.submitted = true;
+        },
+        error: (e) => console.error(e)
+      });
 
+      this.ngOnChanges();
 
+  };
 
 }

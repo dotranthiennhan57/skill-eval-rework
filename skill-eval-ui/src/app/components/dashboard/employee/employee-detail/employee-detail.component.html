@@ -47,7 +47,13 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
-                          <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a><br/>
+                          <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a>
+                          <div *ngFor= "let currentSubskillsEl of currentSubskills">
+                            <div *ngIf="majorSkillsEl.skill_id == currentSubskillsEl.subskillof" style="display: inline-block; padding-bottom: 4px;">
+                              <a href="#"  (click)= "addMajorSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id)">{{currentSubskillsEl.skill_id}} - {{currentSubskillsEl.skill_name}}</a>
+                            </div>
+                            
+                          </div>
 
                         </div>
                       </div>
@@ -87,22 +93,22 @@
                               {{currentEmployeeEl.skill_id}} - {{currentEmployeeEl.skill_name}}
                             </a>
                             <div class="col-md-4 ad-left15 pad-color-p dislinblc range-slider grad " style="display: inline-block; ">
-                              <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" 
+                              <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" (change)="updateSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id, currentEmployeeEl.skill_rating)" (oninput)="updateSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id, currentEmployeeEl.skill_rating)"
                                       step="1" list="volsettings" width="">
                               <datalist id="volsettings">
-                                    <option>0</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
+                                    <option value="0" label="0">0</option>
+                                    <option value="1" >1</option>
+                                    <option value="2" label="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" label="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6" label="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8" label="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10" label="10">10</option>
                               </datalist>
-                              <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}} <span id="fader"></span></p>
+                              <p style="font-size: 10px !important;">Value: {{currentEmployeeEl.skill_rating}}<span id="fader"></span></p>
                             </div>
 
                             <!-- <div class="col-md-2 pad-color-p">
@@ -123,16 +129,18 @@
                         
                         
                         <div [id]="'collapse'+i" class="accordion-collapse collapse pad-color-p"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
+                          
                           <div class="col-md-12 pad-color-p txtalir" style="padding-right: 25%;">
-                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;">
+                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;" (click)="getMajorSkills()">
                           </div>
+                          
                           <div *ngFor="let currentSubskillsEl of currentSubskills">
                             <div class="accordion-body bgcolorp" *ngIf="currentEmployeeEl.skill_id == currentSubskillsEl.subskillof" >
                               <div class="col-md-6 textaligl" style="display: inline-block; padding-bottom: 4px;">
                                 <p>{{currentSubskillsEl.skill_name}}</p>
                               </div>
                               <div class="col-md-4 ad-left15 pad-color-p" style="display: inline-block;">
-                                <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" id="fader" 
+                                <input type="range" min="0" max="10" value="{{currentSubskillsEl.skill_rating}}" (change)="updateSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id, currentSubskillsEl.skill_rating)" (oninput)="updateSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id, currentSubskillsEl.skill_rating)" id="fader" 
                                         step="1" list="volsettings" width="">
                                 <datalist id="volsettings">
                                   <option>0</option>
