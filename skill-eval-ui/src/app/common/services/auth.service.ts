@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject,throwError } from 'rxjs';
-import { User } from './user.model';
+import { Users } from './user.model';
 import { Router } from '@angular/router';
 
 
@@ -20,7 +20,7 @@ export interface AuthResponseData{
   providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<Users>(null);
   private tokenExpirationTimer:any;
 
   constructor(private http: HttpClient, private router:Router) { }
@@ -64,7 +64,7 @@ export class AuthService {
     if (!userData){
       return;
     }
-    const loadedUser = new User(
+    const loadedUser = new Users(
       userData.email,
       userData.id, 
       userData._token, 
@@ -98,7 +98,7 @@ export class AuthService {
   private handleAuthentication(email:string,userId:string, token: string,expiresIn: number){
     const expirationDate = new Date(
       new Date().getTime() + expiresIn*1000);
-    const user = new User(
+    const user = new Users(
       email, 
       userId, 
       token, 

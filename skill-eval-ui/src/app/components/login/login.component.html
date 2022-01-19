@@ -1,41 +1,52 @@
-<!-- <section class="vh-100" >
-    <div class="container" >
-      <div class="row">
-        <div class="col-md-6 offset-md-4">
-          <div class="card text-black" style="border-radius: 25px;">
-            <div class="card-body p-md-5" style="border-radius: 25px; height: 500px;background-color: #702963; color: #ffffff;">
-              <div class="row justify-content-center">
-                <div>
-  
-                  
-                    <div class="row" style="padding-top: 100px;">
+<div class="container bootstrap snippets bootdey">
+  <div class="row ng-scope">
+    <section class="vh-100" >
+      <div class="col-md-6 container " style="padding-top: 5%;" >
+        <div class="panel panel-default" style="border-radius: 25px;">
+          <div class="panel-body container" style="padding-top: 25px; background-color: #E6E6FA; border-radius: 25px;">
+            <!-- <div class="card text-black" style="border-radius: 25px;"> -->
+              <div class="card-body p-md-5" style="border-radius: 25px; height: 500px;background-color: #E6E6FA;">
+                <div class="row justify-content-center">
+                  <div style="padding-top: 25px;">
                       <div>
-                          <!-- <div class="alert alert-danger" *ngIf="error">
-                              <p>{{ error }}</p>
-                          </div> -->
-                          <!-- <div *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></div>
-                          <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
-                              <div class="form-group">
-                                  <label for="email">Email</label>
-                                  <input type="email" id="email" class="form-control" ngModel name="email" required email>
-                              </div>
-                              <div class="form-group">
-                                  <label for="password">Password</label>
-                                  <input type="password" id="password" class="form-control" ngModel name="password" required password minlength="6">
-                              </div> <br/>
-                              <div class="col-xs-5" style="position: relative;">
-                                  <button class="btn btn-dark" type="submit" [disabled]="!authForm.valid" herf="#">Login</button> | <button class="btn btn-dark" (click)="onSwitchMode()" type="button" herf="#">Sign Up</button>
-                              </div>
-                          </form>
+                          <h2>WELCOME</h2>
                       </div>
+                      <div class="row" style="padding-top: 50px;">
+                        <div>
+                            <!-- <div class="alert alert-danger" *ngIf="error">
+                                <p>{{ error }}</p>
+                            </div> -->
+                            <!-- <div *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></div> -->
+                            <form [formGroup]="loginForm">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input 
+                                      type="email" 
+                                      id="email" 
+                                      class="form-control" 
+                                      formControlName="email">
+                                    <div *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid" class="alert alert-danger">Invalid Email.</div>
+                                </div>
+                                <br>
+                                <!-- <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" class="form-control" ngModel name="password" required password minlength="6">
+                                </div> <br/> -->
+                                <div class="col-xs-5" style="position: relative; text-align: right;">
+                                    <button class="btn" style="background-color: #7665c9; color: #ffffff;" (click)="onSubmit()">Login</button>
+                                    <!-- <a class="link" type="link" herf="#" style="color: #7665c9;">Switch to Login</a> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    
                   </div>
-              
-  
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
-    </div>
-  </section> --> -->
+    </section>
+  </div>
+</div>

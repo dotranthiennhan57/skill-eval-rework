@@ -13,7 +13,7 @@ import { EmployeeDetailComponent } from './components/dashboard/employee/employe
 import { EmployeeItemComponent } from './components/dashboard/employee/employee-start/employee-item/employee-item.component';
 import { AuthComponent } from './common/services/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeRelationComponent } from './components/dashboard/employee/employee-relation/employee-relation.component';
 
@@ -36,7 +36,8 @@ import { EmployeeRelationComponent } from './components/dashboard/employee/emplo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

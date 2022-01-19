@@ -7,10 +7,11 @@ import { EmployeeEditComponent } from './components/dashboard/employee/employee-
 import { EmployeeRelationComponent } from './components/dashboard/employee/employee-relation/employee-relation.component';
 import { EmployeeStartComponent } from './components/dashboard/employee/employee-start/employee-start.component';
 import { EmployeeComponent } from './components/dashboard/employee/employee.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/employees', pathMatch:'full'},
+  {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: 'employees', component: EmployeeComponent, children:[
     {path:'', component: EmployeeStartComponent},
     {path:'new', component: EmployeeEditComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
     {path:':id/edit', component: EmployeeEditComponent},
     {path:':id/coworker', component: EmployeeRelationComponent}
   ]},
-  {path: 'auth', component: AuthComponent}
+  {path: 'auth', component: AuthComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

@@ -164,9 +164,9 @@ router.post('/evaluation', (request, response, next) => {
 //POST, auto add subskills
 
 //PUT, update any skill, working
-router.put('/:employee_id', (request, response, next) =>{
-  const {employee_id} = request.params;
-  const {skill_id, skill_rating} = request.body;
+router.put('/updateSkills', (request, response, next) =>{
+  // const {employee_id} = request.params;
+  const {skill_id, skill_rating, employee_id} = request.body;
 
   pool.query(
     `
