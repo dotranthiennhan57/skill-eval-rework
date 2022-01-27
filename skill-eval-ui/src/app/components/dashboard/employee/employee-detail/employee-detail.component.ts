@@ -145,7 +145,7 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
         error: (e) => console.error(e)
       });
 
-      this.ngOnChanges();
+      // this.ngOnChanges();
 
   };
 

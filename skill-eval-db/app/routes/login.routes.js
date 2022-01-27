@@ -4,8 +4,8 @@ const pool = require('../db');
 const router = Router();
 
 //Code here
-router.get('/', (request,response, next) => {
-    const { email } = request.body;
+router.get('/getUser', (request,response, next) => {
+    const { email } = request.query;
 
     const getUserInfoText = `
     select * from users u

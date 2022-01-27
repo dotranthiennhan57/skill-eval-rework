@@ -8,11 +8,12 @@
               <div id="banner">
                 <div class="row inline-block">
                   <img class="col-md-4 img-responsive btn" style="width:fit-content;" src="https://www.utoledo.edu/it/office365/images/Teams2020.png" [routerLink]= "['./coworker']" routerLinkActive = "active" style="width: 70px;">
-                  <ul class="breadcrumb col-md-8">
-                    <li><a href="#">Henry</a></li>
+                  <ul class="breadcrumb col-md-4">
+                    <!-- <li><a href="#">Henry</a></li>
                     <li><a href="#">Ayo</a></li>
-                    <li>Nhan</li>
+                    <li>Nhan</li> -->
                   </ul>
+                  <img class="col-md-4 img-responsive btn" style="width:fit-content;" src="https://cdn1.iconfinder.com/data/icons/materia-arrows-symbols-vol-3/24/018_128_arrow_exit_logout-512.png" [routerLink]= "['../../login']" routerLinkActive = "active" style="width: 70px;">
                   
                 </div>
                 <div class="inline-block txtalir">
@@ -47,10 +48,10 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" *ngFor="let majorSkillsEl of currentMajorSkills">
-                          <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" >{{majorSkillsEl.skill_id}} - {{majorSkillsEl.skill_name}}</a>
+                          <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" style="font-size: larger;">{{majorSkillsEl.skill_name}}</a>
                           <div *ngFor= "let currentSubskillsEl of currentSubskills">
                             <div *ngIf="majorSkillsEl.skill_id == currentSubskillsEl.subskillof" style="display: inline-block; padding-bottom: 4px;">
-                              <a href="#"  (click)= "addMajorSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id)">{{currentSubskillsEl.skill_id}} - {{currentSubskillsEl.skill_name}}</a>
+                              <a href="#"  (click)= "addMajorSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id)">- {{currentSubskillsEl.skill_name}}</a>
                             </div>
                             
                           </div>
@@ -85,12 +86,12 @@
                   </div> -->
 
                     <!-- Main skills and subskills components -->
-                    <div class="accordion accordion-flush htfitc" id="accordionFlushExample" style="height:fit-content;">
-                      <div class="accordion-item" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
-                        <h5 class="accordion-header pad-color-p" [id]="'heading'+i" >
-                          <div class="row">
+                    <div class="accordion accordion-flush htfitc" style="background-color: #d5d5e9;" id="accordionFlushExample" style="height:fit-content;">
+                      <div class="accordion-item" style="background-color: #d5d5e9;" *ngFor="let currentEmployeeEl of currentEmployeeAll; let i = index">
+                        <h5 class="accordion-header" style="background-color: #d5d5e9;" [id]="'heading'+i" >
+                          <div class="row" style="background-color: #d5d5e9;">
                             <a class="col-md-4 pad-color-p nodeco textaligl" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
-                              {{currentEmployeeEl.skill_id}} - {{currentEmployeeEl.skill_name}}
+                              {{currentEmployeeEl.skill_name}}
                             </a>
                             <div class="col-md-4 ad-left15 pad-color-p dislinblc range-slider grad " style="display: inline-block; ">
                               <input type="range" min="0" max="10" value="{{currentEmployeeEl.skill_rating}}" id="fader" (change)="updateSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id, currentEmployeeEl.skill_rating)" (oninput)="updateSkill($event, currentEmployeeEl.skill_id, currentEmployee.employee_id, currentEmployeeEl.skill_rating)"
@@ -131,7 +132,7 @@
                         <div [id]="'collapse'+i" class="accordion-collapse collapse pad-color-p"  [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionFlushExample" >
                           
                           <div class="col-md-12 pad-color-p txtalir" style="padding-right: 25%;">
-                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;" (click)="getMajorSkills()">
+                            <img src="../../../../../assets/Save_Button.png" alt="Save" style="width: 35px;" (click)="ngOnChanges()">
                           </div>
                           
                           <div *ngFor="let currentSubskillsEl of currentSubskills">
