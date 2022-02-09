@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute,Params, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { MajorSkill } from 'src/app/models/major-skill.model';
@@ -11,6 +11,7 @@ import { ReworkemployeeService } from 'src/app/services/reworkemployee.service';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit, OnChanges {
+  @ViewChild('addSubSkillofMajor', {static: false}) addSubSkillofMajor:ElementRef;
 
   currentEmployee: Employee = {};
 
@@ -25,7 +26,8 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
   constructor(
     private reworkemployeeService: ReworkemployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private renderer:Renderer2
     ) {}
 
   ngOnInit(): void {
@@ -100,6 +102,10 @@ export class EmployeeDetailComponent implements OnInit, OnChanges {
         },
         error: (e) => console.error(e)
       });
+    
+    // for(let i = 0; i < this.addSubSkillofMajor.nativeElement.length; i++){
+    //   this.addSubSkillofMajor.nativeElement[i].click();
+    // }
 
     window.location.reload();
     // this.ngOnChanges();

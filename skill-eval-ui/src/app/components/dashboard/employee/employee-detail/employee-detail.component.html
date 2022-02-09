@@ -51,7 +51,7 @@
                           <a href="/edit.html" (click)= "addMajorSkill($event, majorSkillsEl.skill_id, currentEmployee.employee_id)" style="font-size: larger;">{{majorSkillsEl.skill_name}}</a>
                           <div *ngFor= "let currentSubskillsEl of currentSubskills">
                             <div *ngIf="majorSkillsEl.skill_id == currentSubskillsEl.subskillof" style="display: inline-block; padding-bottom: 4px;">
-                              <a href="#"  (click)= "addMajorSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id)">- {{currentSubskillsEl.skill_name}}</a>
+                              <a href="#" #addSubSkillofMajor (click)= "addMajorSkill($event, currentSubskillsEl.skill_id, currentEmployee.employee_id)">- {{currentSubskillsEl.skill_name}}</a>
                             </div>
                             
                           </div>
