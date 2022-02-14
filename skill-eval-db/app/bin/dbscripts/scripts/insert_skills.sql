@@ -41,7 +41,7 @@ insert into Skills(skill_id,skill_name,subskillof) values(7,'UX/UI Design',null)
 --Subskills of Project Manager
 insert into Skills(skill_id,skill_name,subskillof) values(71,'HTML',7);
 insert into Skills(skill_id,skill_name,subskillof) values(72,'CSS',7);
-insert into Skills(skill_id,skill_name,subskillof) values(72,'SCSS',7);
+insert into Skills(skill_id,skill_name,subskillof) values(73,'SCSS',7);
 
 
 

@@ -3,7 +3,7 @@ insert into employees (employee_id, user_id, position_id) values (2,2,2);
 insert into employees (employee_id, user_id, position_id) values (3,3,4);
 insert into employees (employee_id, user_id, position_id) values (4,4,4);
 insert into employees (employee_id, user_id, position_id) values (5,5,4);
-insert into employees (employee_id, user_id, position_id) values (5,5,4);
+
 insert into employees (employee_id, user_id, position_id) values (6,6,4);
 insert into employees (employee_id, user_id, position_id) values (7,7,4);
 insert into employees (employee_id, user_id, position_id) values (8,8,4);
