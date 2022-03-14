@@ -8,7 +8,7 @@ const app = express();
 
 //This is connect to Angular
 var corsOptions = {
-  origin: "http://localhost:4581"
+  origin: "http://3.19.227.187:4581"
 }
 
 app.use(cors(corsOptions));
@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
 
 //Connect Sequelize to PostgreSQL Database
 var sequelize = new Sequelize('SkillEvaluation', 'node_user', 'node_password', {
-  host: "localhost", //your server
+  host: "0.0.0.0", //your server
   port: 4580,//server port
   dialect: 'postgres'
 });
