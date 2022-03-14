@@ -8,7 +8,7 @@ const app = express();
 
 //This is connect to Angular
 var corsOptions = {
-  origin: "http://3.19.227.187:4581"
+  origin: "http://3.19.227.187"
 }
 
 app.use(cors(corsOptions));
