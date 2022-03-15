@@ -36,5 +36,9 @@ var sequelize = new Sequelize('SkillEvaluation', 'node_user', 'node_password', {
   dialect: 'postgres'
 });
 
+app.listen(4580, function () {
+  console.log('CORS-enabled web server listening on port 4580')
+})
+
 
 module.exports = app;
