@@ -40,5 +40,14 @@ app.listen(4580, function () {
   console.log('CORS-enabled web server listening on port 4580')
 })
 
+process.once('SIGUSR2', function () {
+  process.kill(process.pid, 'SIGUSR2');
+});
+
+process.on('SIGINT', function () {
+  // this is only called on ctrl+c, not restart
+  process.kill(process.pid, 'SIGINT');
+});
+
 
 module.exports = app;
