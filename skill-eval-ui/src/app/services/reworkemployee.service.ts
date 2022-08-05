@@ -6,7 +6,7 @@ import { MajorSkill } from '../models/major-skill.model';
 import { MinorSkill } from '../models/minor-skill.model';
 import { PositionList } from '../models/position-list';
 
-const baseUrl = 'http://localhost:4580';
+const baseUrl = 'http://localhost:4582';
 
 @Injectable({
   providedIn: 'root'

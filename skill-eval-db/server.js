@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 //Connect Sequelize to PostgreSQL Database
 var sequelize = new Sequelize('SkillEvaluation', 'node_user', 'node_password', {
   host: "localhost", //your server
-  port: 4580,//server port
+  port: 4582,//server port
   dialect: 'postgres'
 });
 
