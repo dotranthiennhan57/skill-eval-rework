@@ -1,7 +1,7 @@
 module.exports = {
-    user: 'node_user',
+    user: 'postgres',
     host: 'localhost',
     database: 'SkillEvaluation',
-    password: 'node_password',
+    password: 'Nohal@3599',
     port: 5432
 };
